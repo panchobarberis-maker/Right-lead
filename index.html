@@ -262,7 +262,7 @@ nav {
 /* ── Team ────────────────────────────────────── */
 .team { padding: 96px 0; }
 .team-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: 1fr; max-width: 380px;
   gap: 20px; margin-top: 52px;
 }
 .team-card {
@@ -495,7 +495,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <div>
         <div class="eyebrow">Legal Marketing Agency</div>
         <h1 class="hero-headline">The marketing<br>partner law<br>firms <em>choose.</em></h1>
-        <p class="hero-desc">We build digital presence, authority, and client pipelines — exclusively for law firms across the US, Mexico, and Argentina.</p>
+        <p class="hero-desc">We build digital presence, authority, and client pipelines — exclusively for law firms across the US, Mexico, Argentina, and Australia.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">Book a strategy call →</a>
           <a href="#services" class="btn-ghost">See what we do ↓</a>
@@ -506,7 +506,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
             <div class="stat-l">Law firm clients</div>
           </div>
           <div>
-            <div class="stat-n">3</div>
+            <div class="stat-n">4</div>
             <div class="stat-l">Countries</div>
           </div>
           <div>
@@ -532,6 +532,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <span class="geo-badge">🇺🇸 United States</span>
       <span class="geo-badge">🇲🇽 Mexico</span>
       <span class="geo-badge">🇦🇷 Argentina</span>
+      <span class="geo-badge">🇦🇺 Australia</span>
     </div>
   </div>
 </div>
@@ -619,7 +620,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <div class="diff-body">
         <p>Most marketing agencies spread themselves thin across every industry. That means your account manager is learning what a retainer is while billing you for the lesson.</p>
         <p>At RightLead, <strong>every case study, every framework, every strategy we've built is for a law firm.</strong> That depth of focus is our edge — and it becomes yours.</p>
-        <p>We operate across three markets — the US, Mexico, and Argentina — giving us a cross-border perspective that's rare in legal marketing.</p>
+        <p>We operate across four markets — the US, Mexico, Argentina, and Australia — giving us a cross-border perspective that's rare in legal marketing.</p>
       </div>
     </div>
   </div>
@@ -719,8 +720,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 <section class="team" id="team">
   <div class="wrap">
     <div class="fi">
-      <div class="eyebrow">The Team</div>
-      <h2 class="section-title">Small team.<br>Sharp focus.</h2>
+      <div class="eyebrow">Who You Work With</div>
+      <h2 class="section-title">One partner.<br>Sharp focus.</h2>
     </div>
     <div class="team-grid fi">
 
@@ -736,41 +737,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
         <div class="team-info">
           <div class="team-name">Francisco Barberis</div>
           <div class="team-role">Founder &amp; CEO</div>
-          <div class="team-bio">Legal marketing strategist specializing in building digital authority for law firms across Latin America and the US.</div>
-        </div>
-      </div>
-
-      <!-- Add team member 2 here -->
-      <div class="team-card">
-        <div class="team-photo">
-          <div class="team-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Team Member</div>
-          <div class="team-role">Role</div>
-          <div class="team-bio">Add this person's name, role, and a brief bio.</div>
-        </div>
-      </div>
-
-      <!-- Add team member 3 here -->
-      <div class="team-card">
-        <div class="team-photo">
-          <div class="team-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Team Member</div>
-          <div class="team-role">Role</div>
-          <div class="team-bio">Add this person's name, role, and a brief bio.</div>
+          <div class="team-bio">Legal marketing strategist specializing in building digital authority for law firms across Latin America, the US, and Australia.</div>
         </div>
       </div>
 
@@ -813,8 +780,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   const W = 420, H = 420;
   const CX = W / 2, CY = H / 2;
   const R = 162;
-  const MAP_LON = -82, MAP_LAT = 6;
-  const SCALE = R / 74;
+  const MAP_LON = 16, MAP_LAT = 2;
+  const SCALE = R / 145;
 
   function proj(lat, lon) {
     return { x: CX + (lon - MAP_LON) * SCALE, y: CY - (lat - MAP_LAT) * SCALE };
@@ -824,6 +791,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     { lat: 39,  lon: -98,  label: 'USA', lx: 8,  ly: -6 },
     { lat: 23,  lon: -101, label: 'MX',  lx: 8,  ly:  4 },
     { lat: -35, lon: -65,  label: 'ARG', lx: 8,  ly:  4 },
+    { lat: -25, lon: 134,  label: 'AUS', lx: -34, ly: 4 },
   ];
 
   let f = 0;
@@ -845,12 +813,12 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     ctx.save();
     ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI*2); ctx.clip();
 
-    for (let lat = -70; lat <= 80; lat += 20) {
+    for (let lat = -80; lat <= 80; lat += 40) {
       const { y } = proj(lat, MAP_LON);
       ctx.beginPath(); ctx.moveTo(CX-R, y); ctx.lineTo(CX+R, y);
       ctx.strokeStyle = gridC; ctx.lineWidth = 1; ctx.stroke();
     }
-    for (let lon = -140; lon <= -20; lon += 20) {
+    for (let lon = -160; lon <= 180; lon += 40) {
       const { x } = proj(MAP_LAT, lon);
       ctx.beginPath(); ctx.moveTo(x, CY-R); ctx.lineTo(x, CY+R);
       ctx.strokeStyle = gridC; ctx.lineWidth = 1; ctx.stroke();
