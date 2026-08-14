@@ -269,7 +269,7 @@ nav {
 /* ── Team ────────────────────────────────────── */
 .team { padding: 96px 0; }
 .team-grid {
-  display: grid; grid-template-columns: 1fr; max-width: 380px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 20px; margin-top: 52px;
 }
 .team-card {
@@ -304,9 +304,8 @@ nav {
   color: var(--accent); margin-bottom: 12px;
 }
 .team-bio { font-size: 13px; color: var(--fg-muted); line-height: 1.65; }
-@media (max-width: 720px) {
-  .team-grid { grid-template-columns: 1fr; max-width: 380px; }
-}
+@media (max-width: 980px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; max-width: 380px; } }
 
 /* ── Our App ─────────────────────────────────── */
 .app-section { padding: 96px 0; }
@@ -727,8 +726,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 <section class="team" id="team">
   <div class="wrap">
     <div class="fi">
-      <div class="eyebrow">Who You Work With</div>
-      <h2 class="section-title">One partner.<br>Sharp focus.</h2>
+      <div class="eyebrow">The Team</div>
+      <h2 class="section-title">Small team.<br>Sharp focus.</h2>
     </div>
     <div class="team-grid fi">
 
@@ -742,9 +741,57 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
           </div>
         </div>
         <div class="team-info">
-          <div class="team-name">Francisco Barberis</div>
+          <div class="team-name">Eric Goldschmit</div>
           <div class="team-role">Founder &amp; CEO</div>
-          <div class="team-bio">Legal marketing strategist specializing in building digital authority for law firms across Latin America, the US, and Australia.</div>
+          <div class="team-bio">Sets the firm's direction and leads client strategy across all four markets.</div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Sabrina McTominey</div>
+          <div class="team-role">Operations Manager</div>
+          <div class="team-bio">Runs delivery day to day — process, timelines, and keeping every account on track.</div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Luke Mino</div>
+          <div class="team-role">Programmer</div>
+          <div class="team-bio">Builds the lead-filter app and the sites and tracking behind each client's campaigns.</div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <div class="team-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Francisco Barberis</div>
+          <div class="team-role">Co-Founder &amp; Account Manager</div>
+          <div class="team-bio">Main point of contact for clients, from onboarding through to reporting on results.</div>
         </div>
       </div>
 
