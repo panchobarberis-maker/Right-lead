@@ -314,82 +314,19 @@ nav {
   color: var(--fg-dim); margin-top: 4px;
 }
 
-/* browser mockup */
+/* app demo */
 .app-preview { position: relative; }
-.app-mockup { position: relative; }
-.mock-browser {
-  background: var(--surface);
+.app-frame { position: relative; }
+.app-video {
+  display: block; width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 10px; overflow: hidden;
   box-shadow: 0 24px 80px rgba(0,0,0,0.4);
 }
-.mock-bar {
-  background: var(--surface2);
-  padding: 10px 14px;
-  display: flex; align-items: center; gap: 6px;
-  border-bottom: 1px solid var(--border);
-}
-.mock-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--border); display: inline-block;
-}
-.mock-url {
-  font-size: 11px; color: var(--fg-dim);
-  margin-left: 10px; font-family: monospace;
-}
-.mock-body { position: relative; min-height: 280px; overflow: hidden; }
-.mock-page-bg {
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    0deg, transparent, transparent 28px,
-    var(--border) 28px, var(--border) 29px
-  );
-  opacity: 0.4;
-}
-.mock-popup {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--surface2);
-  border: 1px solid rgba(212,98,26,0.3);
-  border-radius: 8px;
-  padding: 24px 28px; width: 280px;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.5);
-}
-.mock-popup-tag {
-  font-size: 9px; font-weight: 800;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 8px;
-}
-.mock-popup-title {
-  font-size: 16px; font-weight: 800;
-  letter-spacing: -0.01em; margin-bottom: 12px;
-}
-.mock-popup-field {
-  font-size: 11px; color: var(--fg-muted);
-  margin-bottom: 8px;
-}
-.mock-popup-options { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-.mock-opt {
-  font-size: 11px; padding: 7px 10px;
-  border: 1px solid var(--border); border-radius: 4px;
-  color: var(--fg-muted); cursor: default;
-}
-.mock-opt.active {
-  border-color: var(--accent);
-  color: var(--accent); background: rgba(212,98,26,0.08);
-}
-.mock-popup-btn {
-  background: var(--accent); color: #fff;
-  font-size: 12px; font-weight: 700;
-  text-align: center; padding: 10px;
-  border-radius: 4px; letter-spacing: 0.04em;
-}
-.mock-popup-sub {
-  font-size: 10px; color: var(--fg-dim);
-  text-align: center; margin-top: 8px;
-}
-.mock-badge {
-  position: absolute; bottom: -14px; right: 16px;
+.app-badge {
+  position: absolute; top: -14px; right: 16px;
   background: var(--accent); color: #fff;
   font-size: 11px; font-weight: 700;
   padding: 7px 14px; border-radius: 100px;
@@ -648,30 +585,10 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
         <a href="#contact" class="btn-primary" style="margin-top:40px;display:inline-flex;">Get early access →</a>
       </div>
       <div class="app-preview">
-        <div class="app-mockup">
-          <!-- Pop-up mockup -->
-          <div class="mock-browser">
-            <div class="mock-bar">
-              <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
-              <span class="mock-url">yourlawfirm.com</span>
-            </div>
-            <div class="mock-body">
-              <div class="mock-page-bg"></div>
-              <div class="mock-popup">
-                <div class="mock-popup-tag">FREE CONSULTATION</div>
-                <div class="mock-popup-title">Do you have a case?</div>
-                <div class="mock-popup-field">What type of issue do you have?</div>
-                <div class="mock-popup-options">
-                  <div class="mock-opt active">Personal Injury</div>
-                  <div class="mock-opt">Family Law</div>
-                  <div class="mock-opt">Criminal Defense</div>
-                </div>
-                <div class="mock-popup-btn">Book Free Consult →</div>
-                <div class="mock-popup-sub">Takes 30 seconds · No commitment</div>
-              </div>
-            </div>
-          </div>
-          <div class="mock-badge">+30% more consultations</div>
+        <div class="app-frame">
+          <video class="app-video" src="app-demo.mp4" poster="app-demo-poster.jpg"
+                 autoplay muted loop playsinline controls preload="metadata"></video>
+          <div class="app-badge">+30% more consultations</div>
         </div>
       </div>
     </div>
@@ -978,6 +895,15 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     requestAnimationFrame(draw);
   }
   draw();
+})();
+
+/* ── App demo: no autoplay when motion is unwelcome ── */
+(function() {
+  const v = document.querySelector('.app-video');
+  if (v && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.removeAttribute('autoplay');
+    v.pause();
+  }
 })();
 
 /* ── Scroll fade-in ───────────────────────────── */
