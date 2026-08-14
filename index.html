@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RightLead</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#D4621A">
 <style>
 /* ── Tokens ──────────────────────────────────── */
 :root {
@@ -824,12 +827,18 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     GRID.push(p);
   }
 
+  /* side: which way the label sits, to keep neighbours from colliding */
   const PINS = [
-    { lon: -98,  lat: 39,  label: 'USA' },
-    { lon: -101, lat: 23,  label: 'MX'  },
-    { lon: -65,  lat: -35, label: 'ARG' },
-    { lon: 134,  lat: -25, label: 'AUS' },
-  ].map(p => ({ label: p.label, lon: p.lon * D2R, sl: Math.sin(p.lat * D2R), cl: Math.cos(p.lat * D2R) }));
+    { lon: -119.50, lat:  37.20, label: 'California',   side: 'l' },
+    { lon:  -99.30, lat:  31.50, label: 'Texas',        side: 'r' },
+    { lon:  -99.13, lat:  19.43, label: 'CDMX',         side: 'l' },
+    { lon:  -58.38, lat: -34.60, label: 'Buenos Aires', side: 'r' },
+    { lon:  -71.31, lat: -41.13, label: 'Bariloche',    side: 'l' },
+    { lon:  151.21, lat: -33.87, label: 'Sydney',       side: 'r' },
+  ].map(p => ({
+    label: p.label, side: p.side,
+    lon: p.lon * D2R, sl: Math.sin(p.lat * D2R), cl: Math.cos(p.lat * D2R),
+  }));
 
   /* ── view state ── */
   let rot = 1.40, tilt = 0.28;    /* opens centred on the Americas */
@@ -933,24 +942,24 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       const pulse = (Math.sin(f * 0.034 + i * 2.1) + 1) / 2;
 
       ctx.beginPath();
-      ctx.arc(x, y, 8 + pulse * 15, 0, Math.PI * 2);
+      ctx.arc(x, y, 5 + pulse * 11, 0, Math.PI * 2);
       ctx.strokeStyle = 'rgba(212,98,26,' + (0.36 * (1 - pulse) * fade).toFixed(3) + ')';
-      ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.lineWidth = 1.4; ctx.stroke();
 
-      const g = ctx.createRadialGradient(x, y, 0, x, y, 18);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, 13);
       g.addColorStop(0, 'rgba(232,116,40,' + (0.46 * fade).toFixed(3) + ')');
       g.addColorStop(1, 'rgba(232,116,40,0)');
-      ctx.beginPath(); ctx.arc(x, y, 18, 0, Math.PI * 2);
+      ctx.beginPath(); ctx.arc(x, y, 13, 0, Math.PI * 2);
       ctx.fillStyle = g; ctx.fill();
 
-      ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.beginPath(); ctx.arc(x, y, 3.4, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(232,116,40,' + fade.toFixed(3) + ')'; ctx.fill();
 
       ctx.globalAlpha = fade;
       ctx.fillStyle = labelC;
-      const right = x > CX;
-      ctx.textAlign = right ? 'right' : 'left';
-      ctx.fillText(p.label, x + (right ? -9 : 9), y + 4);
+      const left = p.side ? p.side === 'l' : x > CX;
+      ctx.textAlign = left ? 'right' : 'left';
+      ctx.fillText(p.label, x + (left ? -8 : 8), y + 3.5);
       ctx.globalAlpha = 1;
     });
     ctx.textAlign = 'left';
