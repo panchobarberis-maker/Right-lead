@@ -383,6 +383,14 @@ nav {
 }
 
 /* ── Footer ──────────────────────────────────── */
+.cta-embed {
+  margin: 40px auto 0; max-width: 900px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--r) + 2px);
+  overflow: hidden;
+}
+.cta-fallback[hidden] { display: none; }
 .cta-alt { margin-top: 22px; font-size: 13px; color: var(--fg-dim); }
 .cta-alt a { color: var(--fg-muted); border-bottom: 1px solid var(--border); }
 .cta-alt a:hover { color: var(--accent); border-color: var(--accent); }
@@ -685,7 +693,13 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     <div class="cta-label">Ready to grow?</div>
     <h2 class="cta-title">Let's build your<br>client pipeline.</h2>
     <p class="cta-desc">Book a free 30-minute strategy call. We'll audit your current digital presence and show you exactly where clients are slipping through.</p>
-    <a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-primary" style="font-size:16px;padding:18px 48px;">Book a Strategy Call →</a>
+    <div class="cta-embed">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/franciscobarberiss/right-lead-services" style="min-width:320px;height:700px;"></div>
+      <a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-primary cta-fallback" hidden>Book a Strategy Call →</a>
+      <noscript>
+        <a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-primary">Book a Strategy Call →</a>
+      </noscript>
+    </div>
     <p class="cta-alt">Or email us at <a href="mailto:franciscobarberiss@gmail.com">franciscobarberiss@gmail.com</a></p>
   </div>
 </section>
@@ -913,6 +927,27 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     v.removeAttribute('autoplay');
     v.pause();
   }
+})();
+
+/* ── Calendly: se carga recien al acercarse, y si no aparece se
+      muestra el boton de siempre ─────────────────────────── */
+(function() {
+  const box = document.querySelector('.calendly-inline-widget');
+  if (!box) return;
+  const fallback = document.querySelector('.cta-fallback');
+  const io = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    io.disconnect();
+    const sc = document.createElement('script');
+    sc.src = 'https://assets.calendly.com/assets/external/widget.js';
+    sc.async = true;
+    sc.onerror = () => { box.remove(); if (fallback) fallback.hidden = false; };
+    document.body.appendChild(sc);
+    setTimeout(() => {
+      if (!box.querySelector('iframe')) { box.remove(); if (fallback) fallback.hidden = false; }
+    }, 6000);
+  }, { rootMargin: '500px' });
+  io.observe(box);
 })();
 
 /* ── Scroll fade-in ───────────────────────────── */
