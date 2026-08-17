@@ -196,6 +196,41 @@ nav {
 }
 .geo-badge:hover { border-color: var(--accent); color: var(--fg); }
 
+/* ── Clients marquee ─────────────────────────── */
+.mq-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--fg-dim); margin-bottom: 22px;
+}
+.mq {
+  overflow: hidden; padding: 2px 0; margin-bottom: 34px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+/* two identical groups, so shifting by half the track loops seamlessly */
+.mq-track { display: flex; width: max-content; }
+.mq-track.ready { animation: mq-slide linear infinite; }
+.mq-group { display: flex; }
+.mq-item {
+  position: relative; white-space: nowrap;
+  padding-right: 64px;
+  font-size: 20px; font-weight: 600;
+  letter-spacing: -0.015em; color: var(--fg-muted);
+}
+.mq-item::after {
+  content: '·'; position: absolute; right: 28px;
+  color: var(--accent); font-weight: 400;
+}
+.mq:hover .mq-track { animation-play-state: paused; }
+@keyframes mq-slide { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .mq { -webkit-mask-image: none; mask-image: none; }
+  .mq-track { animation: none; width: 100%; flex-wrap: wrap; justify-content: center; }
+  .mq-group[aria-hidden] { display: none; }
+  .mq-item:last-child { padding-right: 0; }
+  .mq-item:last-child::after { content: none; }
+}
+
 /* ── Services ────────────────────────────────── */
 .services { padding: 96px 0; }
 .section-head { margin-bottom: 52px; }
@@ -468,8 +503,21 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 
 <div class="divider"></div>
 
-<!-- GEO STRIP -->
+<!-- CLIENTS + GEO STRIP -->
 <div class="geo-strip">
+  <div class="wrap">
+    <div class="mq-label">The firms we work with</div>
+  </div>
+  <div class="mq">
+    <div class="mq-track">
+      <div class="mq-group">
+        <span class="mq-item">The Lange Firm</span>
+        <span class="mq-item">McLellan Law Group</span>
+        <span class="mq-item">Flanagan Law</span>
+        <span class="mq-item">MJ Trust Law</span>
+      </div>
+    </div>
+  </div>
   <div class="wrap">
     <div class="geo-row">
       <span class="geo-label">Active in</span>
@@ -927,6 +975,37 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     v.removeAttribute('autoplay');
     v.pause();
   }
+})();
+
+/* ── Clients marquee: clone the row until one half covers the viewport,
+      otherwise the loop leaves a gap on wide screens ────────── */
+(function() {
+  const track = document.querySelector('.mq-track');
+  if (!track) return;
+  const base = track.firstElementChild;
+  if (!base || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let copies = 0;
+  function fill() {
+    const w = base.getBoundingClientRect().width;
+    if (!w) return;
+    const half = Math.max(2, Math.ceil(innerWidth / w) + 1);
+    if (half === copies) return;
+    copies = half;
+    track.classList.remove('ready');
+    while (track.children.length > 1) track.lastElementChild.remove();
+    for (let i = 1; i < half * 2; i++) {
+      const c = base.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      track.appendChild(c);
+    }
+    /* keep the speed constant however many copies there are */
+    track.style.animationDuration = (half * w / 55).toFixed(1) + 's';
+    track.classList.add('ready');
+  }
+  fill();
+  addEventListener('resize', () => { clearTimeout(fill.t); fill.t = setTimeout(fill, 200); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fill);
 })();
 
 /* ── Calendly: se carga recien al acercarse, y si no aparece se
