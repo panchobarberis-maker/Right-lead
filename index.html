@@ -1265,13 +1265,19 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   document.getElementById('q-x').addEventListener('click', close);
   box.addEventListener('click', e => { if (e.target === box) close(); });
 
-  /* Not on load: only once they have read enough to care, or are leaving. */
   let fired = false;
   function fire() {
     if (fired) return;
     fired = true;
     open();
   }
+
+  /* On the home page it opens on a timer, because sorting the visitor is
+     what that page is for. On the landings it waits for scroll or an exit
+     move instead, so it never interrupts the pitch they came to read. */
+  const page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
+  if (page === 'index' || page === '') setTimeout(fire, 4000);
+
   const onScroll = () => {
     const d = document.documentElement;
     const pct = d.scrollTop / (d.scrollHeight - d.clientHeight || 1);
