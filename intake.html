@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Intake Audit — RightLead</title>
+<meta name="description" content="For contingency firms: find out how many people start your contact form and never finish, and what happens to them today.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#D4621A">
+<style>
+/* ── Tokens — kept identical to index.html ───── */
+:root {
+  --bg:        #080808;
+  --surface:   #101010;
+  --surface2:  #181818;
+  --border:    rgba(255,255,255,0.07);
+  --accent:    #D4621A;
+  --accent-hi: #E87428;
+  --fg:        #EDE8E0;
+  --fg-muted:  rgba(237,232,224,0.55);
+  --fg-dim:    rgba(237,232,224,0.26);
+  --r:         6px;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg:        #F9EDE1;
+    --surface:   #FFF8F2;
+    --surface2:  #F1DFCE;
+    --border:    rgba(10,6,2,0.08);
+    --accent:    #C45A17;
+    --accent-hi: #D4621A;
+    --fg:        #0A0602;
+    --fg-muted:  rgba(10,6,2,0.55);
+    --fg-dim:    rgba(10,6,2,0.28);
+  }
+}
+:root[data-theme="light"] {
+  --bg:        #F9EDE1;
+  --surface:   #FFF8F2;
+  --surface2:  #F1DFCE;
+  --border:    rgba(10,6,2,0.08);
+  --accent:    #C45A17;
+  --accent-hi: #D4621A;
+  --fg:        #0A0602;
+  --fg-muted:  rgba(10,6,2,0.55);
+  --fg-dim:    rgba(10,6,2,0.28);
+}
+
+/* ── Reset ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; }
+
+/* ── Layout ──────────────────────────────────── */
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 600px) { .wrap { padding: 0 20px; } }
+.divider { height: 1px; background: var(--border); }
+
+/* ── Nav ─────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(8,8,8,0.88);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) nav { background: rgba(249,237,225,0.88); }
+}
+:root[data-theme="light"] nav { background: rgba(249,237,225,0.88); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-size: 17px; font-weight: 800; letter-spacing: -0.02em; color: var(--fg); }
+.logo-dot { color: var(--accent); }
+.btn-nav {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent); color: #fff;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 10px 20px; border-radius: var(--r);
+  transition: background .18s;
+}
+.btn-nav:hover { background: var(--accent-hi); }
+
+/* ── Shared bits ─────────────────────────────── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 18px;
+}
+.eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--accent); }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: #fff;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.02em;
+  padding: 16px 36px; border-radius: var(--r);
+  transition: background .18s, transform .14s;
+}
+.btn-primary:hover { background: var(--accent-hi); transform: translateY(-1px); }
+
+/* ── Sales page rhythm ───────────────────────── */
+section { padding: 72px 0; }
+.lede { font-size: 19px; line-height: 1.75; color: var(--fg-muted); }
+h1 {
+  font-size: clamp(40px, 6vw, 68px); font-weight: 900;
+  line-height: 1.02; letter-spacing: -0.035em;
+  text-wrap: balance; margin-bottom: 24px;
+}
+h1 em { font-style: normal; color: var(--accent-hi); }
+h2 {
+  font-size: clamp(28px, 3.6vw, 40px); font-weight: 900;
+  line-height: 1.1; letter-spacing: -0.03em;
+  text-wrap: balance; margin-bottom: 20px;
+}
+p { font-size: 17px; line-height: 1.78; color: var(--fg-muted); margin-bottom: 18px; }
+p strong { color: var(--fg); font-weight: 700; }
+p:last-child { margin-bottom: 0; }
+
+/* hero */
+.hero { padding: 72px 0 56px; }
+.hero-cta { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 34px; }
+.hero-note { font-size: 13px; color: var(--fg-dim); }
+
+/* video slot */
+.vid {
+  margin: 34px 0 0; border: 1px solid var(--border);
+  border-radius: calc(var(--r) + 2px); overflow: hidden;
+  background: var(--surface2);
+}
+.vid video { display: block; width: 100%; aspect-ratio: 16/9; background: #0A0602; }
+.vid-todo {
+  aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px; color: var(--fg-dim);
+  font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.vid-todo span { font-size: 12px; letter-spacing: 0; text-transform: none; }
+
+/* the scene */
+.scene { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.scene p { font-size: 19px; }
+.beat { color: var(--fg); font-weight: 700; }
+
+/* checklist */
+.check { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 26px 0 0; }
+.check li { position: relative; padding-left: 32px; font-size: 17px; line-height: 1.7; color: var(--fg-muted); }
+.check li::before {
+  content: ''; position: absolute; left: 0; top: 10px;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
+}
+.check b { color: var(--fg); }
+
+/* numbered steps */
+.steps { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: calc(var(--r) + 2px); overflow: hidden; margin-top: 34px; }
+.step { background: var(--surface); padding: 30px 32px; }
+.step-n {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.2em;
+  color: var(--accent); margin-bottom: 10px;
+}
+.step h3 { font-size: 19px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 8px; }
+.step p { font-size: 15.5px; margin: 0; }
+
+/* callout */
+.callout {
+  background: var(--surface2); border-left: 3px solid var(--accent);
+  border-radius: var(--r); padding: 26px 30px; margin: 30px 0;
+}
+.callout p { font-size: 16.5px; margin: 0; }
+
+/* faq */
+.faq { margin-top: 30px; border-top: 1px solid var(--border); }
+.faq details { border-bottom: 1px solid var(--border); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 20px 0;
+  font-size: 17px; font-weight: 700; color: var(--fg);
+  display: flex; justify-content: space-between; gap: 20px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--accent); font-weight: 400; font-size: 22px; line-height: 1; }
+.faq details[open] summary::after { content: '\2212'; }
+.faq details p { padding: 0 0 22px; margin: 0; font-size: 16px; }
+
+/* closing */
+.close-cta { text-align: center; }
+.close-cta h2 { margin-bottom: 14px; }
+.close-cta .lede { max-width: 620px; margin: 0 auto 32px; }
+.cta-embed {
+  margin: 36px auto 0; max-width: 820px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: calc(var(--r) + 2px); overflow: hidden;
+}
+.cta-fallback[hidden] { display: none; }
+.cta-alt { margin-top: 20px; font-size: 13px; color: var(--fg-dim); }
+.cta-alt a { color: var(--fg-muted); border-bottom: 1px solid var(--border); }
+
+footer { border-top: 1px solid var(--border); padding: 32px 0; }
+.footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--fg-dim); }
+.footer-inner a { color: var(--fg-muted); }
+
+/* fade in */
+.fi { opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .5s; }
+.fi.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .fi { opacity: 1; transform: none; transition: none; } }
+
+/* ── Qualifier: our own pop-up, running on our own site ───── */
+.q-scrim {
+  position: fixed; inset: 0; z-index: 400;
+  background: rgba(8,6,4,0.55); backdrop-filter: blur(3px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; opacity: 0; transition: opacity .22s;
+}
+.q-scrim[hidden] { display: none; }
+.q-scrim.on { opacity: 1; }
+.q-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--r) + 4px);
+  width: 100%; max-width: 440px; padding: 34px 34px 28px;
+  position: relative;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+  transform: translateY(10px); transition: transform .22s;
+}
+.q-scrim.on .q-card { transform: none; }
+.q-close {
+  position: absolute; top: 14px; right: 16px;
+  background: none; border: 0; cursor: pointer;
+  font-size: 22px; line-height: 1; color: var(--fg-dim); padding: 4px 6px;
+}
+.q-close:hover { color: var(--fg); }
+.q-tag {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+}
+.q-title {
+  font-size: 23px; font-weight: 800; letter-spacing: -0.02em;
+  line-height: 1.22; margin-bottom: 8px; text-wrap: balance;
+}
+.q-sub { font-size: 14px; color: var(--fg-muted); line-height: 1.6; margin-bottom: 20px; }
+.q-opts { display: flex; flex-direction: column; gap: 9px; }
+.q-opt {
+  text-align: left; width: 100%; cursor: pointer;
+  background: var(--surface2); color: var(--fg);
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 13px 16px; font-size: 14.5px; font-family: inherit;
+  transition: border-color .16s, background .16s;
+}
+.q-opt:hover, .q-opt:focus-visible {
+  border-color: var(--accent); background: rgba(212,98,26,0.07); outline: none;
+}
+.q-opt b { display: block; font-weight: 700; margin-bottom: 2px; }
+.q-opt span { font-size: 12.5px; color: var(--fg-muted); }
+.q-foot { margin-top: 18px; font-size: 11.5px; color: var(--fg-dim); text-align: center; }
+.q-step { display: none; }
+.q-step.on { display: block; }
+.q-cta { margin-top: 6px; display: inline-flex; width: 100%; justify-content: center; }
+.q-card.wide { max-width: 780px; }
+.q-video { margin: 4px 0 18px; }
+.q-video video {
+  display: block; width: 100%; aspect-ratio: 16 / 9;
+  background: #0A0602; border-radius: var(--r);
+  border: 1px solid var(--border);
+}
+.q-len { font-size: 11.5px; color: var(--fg-dim); margin-top: 7px; }
+@media (max-width: 480px) { .q-card { padding: 28px 22px 22px; } }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Right<span class="logo-dot">·</span>Lead</a>
+      <a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-nav">Free Audit →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">For contingency firms</div>
+    <h1>You already paid for the click. The case still never <em>reached you.</em></h1>
+    <p class="lede">Not the people who said no. The people who were trying to hire you and quit halfway through your contact form — and you never found out they were there.</p>
+
+    <div class="vid" id="vsl-hero">
+      <div class="vid-todo">Hero video
+        <span>Drop in vsl-contingency.mp4 when it's recorded</span>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-primary">Book a free intake audit →</a>
+      <span class="hero-note">20 minutes · nothing to install · yours whether we work together or not</span>
+    </div>
+  </div>
+</section>
+
+<!-- THE SCENE -->
+<section class="scene fi">
+  <div class="wrap">
+    <h2>Tuesday, eleven at night</h2>
+    <p>Someone gets hurt at work. That night, phone in bed, they search for a lawyer. They click your ad. <strong>You just paid for that click.</strong></p>
+    <p>They land on your site, they find your contact form, and they start filling it in. Name. Email. Phone.</p>
+    <p>Then the form asks for the date of the accident. The insurance carrier. Whether they reported it in writing. Things nobody can answer at eleven at night from bed.</p>
+    <p class="beat">And they stop.</p>
+    <p>They don't come back tomorrow. They go back to the search results and click the firm underneath you.</p>
+  </div>
+</section>
+
+<!-- THE COST -->
+<section class="fi">
+  <div class="wrap">
+    <h2>The part that should bother you</h2>
+    <p>You never find out they were there. No name, no email, nothing to follow up on. That person isn't in your CRM, isn't in a report, and isn't in any number anyone shows you at the end of the month. They're just gone.</p>
+    <p>On a contingency practice, one of those isn't a lost lead. <strong>It's a case.</strong></p>
+
+    <div class="callout">
+      <p><strong>Check it yourself tonight.</strong> Open your analytics. Count how many people reached your contact page last month, and how many requests you actually received. The gap between those two numbers is what this page is about — and it's your number, not mine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="scene fi">
+  <div class="wrap">
+    <h2>This isn't a traffic problem</h2>
+    <p>You already won the hard part. They found you, they clicked, they wanted to talk.</p>
+    <p>It's an intake problem. And it happens for a boring reason: <strong>your form was built to collect what the firm needs, in the order the firm wants it</strong> — from someone who is frightened, in pain, and typing with one thumb.</p>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="fi">
+  <div class="wrap">
+    <div class="eyebrow">What RightLead does</div>
+    <h2>It sits on top of the site you already have</h2>
+    <p class="lede">One line of code. Nothing to rebuild, nothing to migrate.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">01</div>
+        <h3>It asks before it collects</h3>
+        <p>It doesn't open with a form. It opens with one question: what happened. Everything after that depends on the answer, so a workplace injury is never asked about a car.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <h3>It keeps what they typed</h3>
+        <p>Every answer is saved the moment it's typed. When someone leaves halfway, you still have their name, their email, and the exact step they stopped at.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <h3>It follows up without you</h3>
+        <p>A reminder goes out on its own. When they come back, everything they already filled in is still there, so they finish instead of starting over.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <h3>It tells you where the case came from</h3>
+        <p>Not just "Google". The campaign, and the page they read first — down to the blog post. So you know which spend is producing signed cases and which is producing clicks.</p>
+      </div>
+    </div>
+
+    <div class="vid" id="vsl-demo">
+      <video src="app-demo.mp4" poster="app-demo-poster.jpg" controls playsinline preload="none"></video>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="scene fi">
+  <div class="wrap">
+    <h2>Who you'd be talking to</h2>
+    <p>I'm Frank Barberis. I do marketing for US law firms, and this is the thing I kept rebuilding for every one of them until I turned it into a product.</p>
+    <p>Firms in <strong>Houston, San Jose, San Diego and Atlanta</strong>. Small enough that you get me, not an account coordinator.</p>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="fi">
+  <div class="wrap">
+    <div class="eyebrow">The offer</div>
+    <h2>Twenty minutes on your intake. Free.</h2>
+    <p class="lede">I'll go through your contact form the way one of your clients would, and tell you what I find.</p>
+    <ul class="check">
+      <li><b>How many steps it takes</b> to actually reach you, and where someone would give up.</li>
+      <li><b>Which questions can't be answered</b> from a phone at eleven at night.</li>
+      <li><b>What happens today</b> to the people who start and don't finish — usually, nothing.</li>
+      <li><b>Where your requests are coming from</b>, and whether you can currently tell.</li>
+    </ul>
+    <div class="callout">
+      <p>You keep all of it whether or not you ever work with me. If it turns out your intake is fine, I'll tell you that and we're done in ten minutes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="scene fi">
+  <div class="wrap">
+    <h2>Before you ask</h2>
+    <div class="faq">
+      <details>
+        <summary>Do I have to change my website?</summary>
+        <p>No. It's one line of code on the site you already have. Your pages, your design, your host — nothing moves.</p>
+      </details>
+      <details>
+        <summary>Won't this bring me more junk inquiries?</summary>
+        <p>It should bring you fewer. The questions branch by case type, so someone with a matter you don't take gets filtered before they reach you — and the ones who do reach you arrive with the details already answered.</p>
+      </details>
+      <details>
+        <summary>We already have a chat widget.</summary>
+        <p>Most chat widgets start a conversation someone has to be there to answer, and keep nothing if the visitor leaves. This is the opposite: it works unattended, and its whole point is what happens to the people who don't finish.</p>
+      </details>
+      <details>
+        <summary>What happens after the audit?</summary>
+        <p>If it's useful, we talk about installing it. If it isn't, you keep the audit and that's the end of it. There's no trial to cancel and nothing to sign to get the audit itself.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close-cta fi">
+  <div class="wrap">
+    <h2>Find out what your form is costing you</h2>
+    <p class="lede">Pick a time. Twenty minutes, and you'll know your own number.</p>
+    <div class="cta-embed">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/franciscobarberiss/right-lead-services" style="min-width:320px;height:700px;"></div>
+      <a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-primary cta-fallback" hidden>Book a free intake audit →</a>
+      <noscript><a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-primary">Book a free intake audit →</a></noscript>
+    </div>
+    <p class="cta-alt">Or email <a href="mailto:franciscobarberiss@gmail.com">franciscobarberiss@gmail.com</a></p>
+  </div>
+</section>
+
+<!-- QUALIFIER -->
+<div class="q-scrim" id="qual" hidden role="dialog" aria-modal="true" aria-labelledby="q-h">
+  <div class="q-card">
+    <button class="q-close" id="q-x" aria-label="Close">&times;</button>
+
+    <div class="q-step on" data-step="1">
+      <div class="q-tag">30 seconds</div>
+      <div class="q-title" id="q-h">How does your firm get paid?</div>
+      <p class="q-sub">So we show you the part that actually applies to you.</p>
+      <div class="q-opts">
+        <button class="q-opt" data-k="model" data-v="contingency">
+          <b>Contingency</b><span>Personal injury, workers' comp &mdash; free consultations</span>
+        </button>
+        <button class="q-opt" data-k="model" data-v="hourly">
+          <b>Hourly or flat fee</b><span>Family, estate, criminal, immigration</span>
+        </button>
+        <button class="q-opt" data-k="model" data-v="both">
+          <b>A bit of both</b><span>General practice</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="q-step" data-step="2">
+      <div class="q-tag">Last one</div>
+      <div class="q-title">What are you doing for marketing today?</div>
+      <p class="q-sub">There is no wrong answer &mdash; it changes what we would look at first.</p>
+      <div class="q-opts">
+        <button class="q-opt" data-k="spend" data-v="agency">
+          <b>An agency handles it</b><span>Someone is running it for us</span>
+        </button>
+        <button class="q-opt" data-k="spend" data-v="self">
+          <b>I do it myself</b><span>When there is time</span>
+        </button>
+        <button class="q-opt" data-k="spend" data-v="none">
+          <b>Nothing yet</b><span>Word of mouth and referrals</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="q-step" data-step="3">
+      <div class="q-tag">Here is the part that fits</div>
+      <div class="q-title" id="q-answer"></div>
+      <p class="q-sub" id="q-answer-sub"></p>
+      <div class="q-video" id="q-video" hidden></div>
+      <a class="btn-primary q-cta" id="q-book" href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener">Book a free intake audit &rarr;</a>
+      <div class="q-foot">By the way &mdash; this pop-up is our own product.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span>© 2026 RightLead · Legal marketing for US law firms.</span>
+      <span><a href="index.html">← Back to the main site</a></span>
+    </div>
+  </div>
+</footer>
+<script>
+/* ── Qualifier pop-up ──────────────────────────────────────
+   Segments the visitor and carries the answers into the booking
+   link, so every call arrives already labelled. It is also a live
+   demo: this is the same kind of pop-up we sell. ───────────── */
+(function() {
+  const box = document.getElementById('qual');
+  if (!box) return;
+  const KEY = 'rl-qual';
+  let seen = false;
+  try { seen = !!localStorage.getItem(KEY); } catch (e) {}
+  if (seen) return;
+
+  const answers = {};
+  let watched = 0;
+  const steps = box.querySelectorAll('.q-step');
+  const CAL = 'https://calendly.com/franciscobarberiss/right-lead-services';
+
+  /* One VSL per segment. `v` empty -> that segment just gets the text.
+     Swap in the real recordings as they are made; app-demo.mp4 stands in. */
+  const COPY = {
+    contingency: {
+      v: 'app-demo.mp4', p: 'app-demo-poster.jpg', len: '85 seconds',
+      t: "You already paid for the click.",
+      s: "On a contingency practice the whole spend rides on intake. We show you how many people start your form, the exact step they quit at, and which ad or page they came from.",
+    },
+    hourly: {
+      v: 'app-demo.mp4', p: 'app-demo-poster.jpg', len: '85 seconds',
+      t: "Your inventory is your time.",
+      s: "When the consultation is billable, the cost is not missed leads \u2014 it is hours spent on people who were never going to hire you. We show you who is reaching your calendar and who is dropping out on the way.",
+    },
+    both: {
+      v: '', p: '', len: '',
+      t: "Two funnels, one contact form.",
+      s: "General practices usually run one intake for very different matters. We show you where each type drops off, and what each one is worth to you.",
+    },
+  };
+
+  function show(n) {
+    steps.forEach(s => s.classList.toggle('on', +s.dataset.step === n));
+  }
+  function open() {
+    box.hidden = false;
+    requestAnimationFrame(() => box.classList.add('on'));
+    document.addEventListener('keydown', onKey);
+  }
+  function close() {
+    box.classList.remove('on');
+    setTimeout(() => { box.hidden = true; }, 220);
+    document.removeEventListener('keydown', onKey);
+    try { localStorage.setItem(KEY, JSON.stringify(answers)); } catch (e) {}
+  }
+  function onKey(e) { if (e.key === 'Escape') close(); }
+
+  box.querySelectorAll('.q-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      answers[btn.dataset.k] = btn.dataset.v;
+      if (btn.dataset.k === 'model') { show(2); return; }
+
+      const c = COPY[answers.model] || COPY.both;
+      document.getElementById('q-answer').textContent = c.t;
+      document.getElementById('q-answer-sub').textContent = c.s;
+
+      /* the booking link carries the segment, and how much of the VSL
+         they actually watched, so the call arrives already labelled */
+      const book = document.getElementById('q-book');
+      function link() {
+        const u = new URL(CAL);
+        u.searchParams.set('utm_source', 'site-qualifier');
+        u.searchParams.set('utm_campaign', answers.model || 'unknown');
+        u.searchParams.set('utm_content', answers.spend || 'unknown');
+        u.searchParams.set('utm_term', 'watched-' + watched);
+        book.href = u.toString();
+      }
+      link();
+
+      const slot = document.getElementById('q-video');
+      if (c.v) {
+        const vid = document.createElement('video');
+        vid.src = c.v;
+        if (c.p) vid.poster = c.p;
+        vid.controls = true;
+        vid.playsInline = true;
+        vid.preload = 'none';
+        slot.replaceChildren(vid);
+        if (c.len) {
+          const n = document.createElement('div');
+          n.className = 'q-len';
+          n.textContent = c.len + ' \u2014 then book if it sounds like your firm.';
+          slot.appendChild(n);
+        }
+        slot.hidden = false;
+        box.querySelector('.q-card').classList.add('wide');
+        /* round to tenths so the link is rewritten rarely, not every frame */
+        vid.addEventListener('timeupdate', () => {
+          if (!vid.duration) return;
+          const pct = Math.min(100, Math.round(vid.currentTime / vid.duration * 10) * 10);
+          if (pct > watched) { watched = pct; link(); }
+        });
+      }
+      show(3);
+      try { localStorage.setItem(KEY, JSON.stringify(answers)); } catch (e) {}
+    });
+  });
+
+  document.getElementById('q-x').addEventListener('click', close);
+  box.addEventListener('click', e => { if (e.target === box) close(); });
+
+  /* Not on load: only once they have read enough to care, or are leaving. */
+  let fired = false;
+  function fire() {
+    if (fired) return;
+    fired = true;
+    open();
+  }
+  const onScroll = () => {
+    const d = document.documentElement;
+    const pct = d.scrollTop / (d.scrollHeight - d.clientHeight || 1);
+    if (pct > 0.3) { fire(); removeEventListener('scroll', onScroll); }
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('mouseleave', e => { if (e.clientY <= 0) fire(); });
+})();
+
+/* ── Calendly: loads only when the booking section is near ─── */
+(function() {
+  const box = document.querySelector('.calendly-inline-widget');
+  if (!box) return;
+  const fallback = document.querySelector('.cta-fallback');
+  const io = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    io.disconnect();
+    const sc = document.createElement('script');
+    sc.src = 'https://assets.calendly.com/assets/external/widget.js';
+    sc.async = true;
+    sc.onerror = () => { box.remove(); if (fallback) fallback.hidden = false; };
+    document.body.appendChild(sc);
+    setTimeout(() => {
+      if (!box.querySelector('iframe')) { box.remove(); if (fallback) fallback.hidden = false; }
+    }, 6000);
+  }, { rootMargin: '500px' });
+  io.observe(box);
+})();
+
+/* ── Scroll fade-in ───────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
