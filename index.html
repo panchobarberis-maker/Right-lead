@@ -482,6 +482,14 @@ nav {
 .q-step { display: none; }
 .q-step.on { display: block; }
 .q-cta { margin-top: 6px; display: inline-flex; width: 100%; justify-content: center; }
+.q-card.wide { max-width: 780px; }
+.q-video { margin: 4px 0 18px; }
+.q-video video {
+  display: block; width: 100%; aspect-ratio: 16 / 9;
+  background: #0A0602; border-radius: var(--r);
+  border: 1px solid var(--border);
+}
+.q-len { font-size: 11.5px; color: var(--fg-dim); margin-top: 7px; }
 @media (max-width: 480px) { .q-card { padding: 28px 22px 22px; } }
 
 footer { border-top: 1px solid var(--border); padding: 36px 0; }
@@ -849,6 +857,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <div class="q-tag">Here is the part that fits</div>
       <div class="q-title" id="q-answer"></div>
       <p class="q-sub" id="q-answer-sub"></p>
+      <div class="q-video" id="q-video" hidden></div>
       <a class="btn-primary q-cta" id="q-book" href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener">Book a free intake audit &rarr;</a>
       <div class="q-foot">By the way &mdash; this pop-up is our own product.</div>
     </div>
@@ -1145,19 +1154,25 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   if (seen) return;
 
   const answers = {};
+  let watched = 0;
   const steps = box.querySelectorAll('.q-step');
   const CAL = 'https://calendly.com/franciscobarberiss/right-lead-services';
 
+  /* One VSL per segment. `v` empty -> that segment just gets the text.
+     Swap in the real recordings as they are made; app-demo.mp4 stands in. */
   const COPY = {
     contingency: {
+      v: 'app-demo.mp4', p: 'app-demo-poster.jpg', len: '85 seconds',
       t: "You already paid for the click.",
       s: "On a contingency practice the whole spend rides on intake. We show you how many people start your form, the exact step they quit at, and which ad or page they came from.",
     },
     hourly: {
+      v: 'app-demo.mp4', p: 'app-demo-poster.jpg', len: '85 seconds',
       t: "Your inventory is your time.",
       s: "When the consultation is billable, the cost is not missed leads \u2014 it is hours spent on people who were never going to hire you. We show you who is reaching your calendar and who is dropping out on the way.",
     },
     both: {
+      v: '', p: '', len: '',
       t: "Two funnels, one contact form.",
       s: "General practices usually run one intake for very different matters. We show you where each type drops off, and what each one is worth to you.",
     },
@@ -1187,12 +1202,44 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       const c = COPY[answers.model] || COPY.both;
       document.getElementById('q-answer').textContent = c.t;
       document.getElementById('q-answer-sub').textContent = c.s;
-      /* carry the segment through to the booking, so the call is pre-labelled */
-      const u = new URL(CAL);
-      u.searchParams.set('utm_source', 'site-qualifier');
-      u.searchParams.set('utm_campaign', answers.model || 'unknown');
-      u.searchParams.set('utm_content', answers.spend || 'unknown');
-      document.getElementById('q-book').href = u.toString();
+
+      /* the booking link carries the segment, and how much of the VSL
+         they actually watched, so the call arrives already labelled */
+      const book = document.getElementById('q-book');
+      function link() {
+        const u = new URL(CAL);
+        u.searchParams.set('utm_source', 'site-qualifier');
+        u.searchParams.set('utm_campaign', answers.model || 'unknown');
+        u.searchParams.set('utm_content', answers.spend || 'unknown');
+        u.searchParams.set('utm_term', 'watched-' + watched);
+        book.href = u.toString();
+      }
+      link();
+
+      const slot = document.getElementById('q-video');
+      if (c.v) {
+        const vid = document.createElement('video');
+        vid.src = c.v;
+        if (c.p) vid.poster = c.p;
+        vid.controls = true;
+        vid.playsInline = true;
+        vid.preload = 'none';
+        slot.replaceChildren(vid);
+        if (c.len) {
+          const n = document.createElement('div');
+          n.className = 'q-len';
+          n.textContent = c.len + ' \u2014 then book if it sounds like your firm.';
+          slot.appendChild(n);
+        }
+        slot.hidden = false;
+        box.querySelector('.q-card').classList.add('wide');
+        /* round to tenths so the link is rewritten rarely, not every frame */
+        vid.addEventListener('timeupdate', () => {
+          if (!vid.duration) return;
+          const pct = Math.min(100, Math.round(vid.currentTime / vid.duration * 10) * 10);
+          if (pct > watched) { watched = pct; link(); }
+        });
+      }
       show(3);
       try { localStorage.setItem(KEY, JSON.stringify(answers)); } catch (e) {}
     });
