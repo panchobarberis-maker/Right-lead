@@ -513,6 +513,20 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
      Swap in the real recordings as they are made; app-demo.mp4 stands in. */
   /* Each segment routes to the landing written for it. `v` empty means
      that segment gets text only. */
+  /* wording must match the Calendly answer options exactly, it is case sensitive */
+  const LABEL = {
+    model: {
+      contingency: 'Contingency (personal injury, workers comp)',
+      hourly: 'Hourly or flat fee',
+      both: 'Both / general practice',
+    },
+    spend: {
+      agency: 'An agency handles it',
+      self: 'I do it myself',
+      none: 'Nothing yet',
+    },
+  };
+
   const COPY = {
     contingency: {
       go: 'intake',
@@ -580,6 +594,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
         u.searchParams.set('utm_campaign', answers.model || 'unknown');
         u.searchParams.set('utm_content', answers.spend || 'unknown');
         u.searchParams.set('utm_term', 'watched-' + watched);
+        /* a1/a2 prefill the two invitee questions, in the order they are
+           set up in Calendly, so the booking arrives already answered */
+        u.searchParams.set('a1', LABEL.model[answers.model] || '');
+        u.searchParams.set('a2', LABEL.spend[answers.spend] || '');
         book.href = u.toString();
       }
       link();
@@ -643,6 +661,27 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; }
   const box = document.querySelector('.calendly-inline-widget');
   if (!box) return;
   const fallback = document.querySelector('.cta-fallback');
+
+  /* carry the qualifier answers into the embedded calendar too */
+  try {
+    const saved = JSON.parse(localStorage.getItem('rl-qual') || '{}');
+    const L = {
+      contingency: 'Contingency (personal injury, workers comp)',
+      hourly: 'Hourly or flat fee',
+      both: 'Both / general practice',
+      agency: 'An agency handles it',
+      self: 'I do it myself',
+      none: 'Nothing yet',
+    };
+    if (saved.model || saved.spend) {
+      const u = new URL(box.dataset.url);
+      if (saved.model) u.searchParams.set('a1', L[saved.model] || '');
+      if (saved.spend) u.searchParams.set('a2', L[saved.spend] || '');
+      u.searchParams.set('utm_source', 'site-qualifier');
+      u.searchParams.set('utm_campaign', saved.model || 'unknown');
+      box.dataset.url = u.toString();
+    }
+  } catch (e) {}
   const io = new IntersectionObserver(entries => {
     if (!entries[0].isIntersecting) return;
     io.disconnect();

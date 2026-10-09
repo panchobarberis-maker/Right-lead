@@ -146,6 +146,11 @@ nav {
   transition: background .18s, transform .14s;
 }
 .btn-primary:hover { background: var(--accent-hi); transform: translateY(-1px); }
+.btn-alt {
+  background: transparent; color: var(--fg);
+  border: 1px solid var(--border);
+}
+.btn-alt:hover { background: var(--surface2); border-color: var(--accent); }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 14px; font-weight: 500; color: var(--fg-muted);
@@ -534,12 +539,12 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow">Legal Marketing Agency</div>
-        <h1 class="hero-headline">The marketing<br>partner law<br>firms <em>choose.</em></h1>
-        <p class="hero-desc">We build digital presence, authority, and client pipelines, exclusively for US law firms.</p>
+        <div class="eyebrow">Legal marketing, by practice type</div>
+        <h1 class="hero-headline">Law firms don't<br>all grow the <em>same way.</em></h1>
+        <p class="hero-desc">A contingency practice needs volume. A flat-fee practice needs fit. We build a different plan for each, and only for US law firms. Pick yours:</p>
         <div class="hero-actions">
-          <a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-primary">Book a strategy call →</a>
-          <a href="#services" class="btn-ghost">See what we do ↓</a>
+          <a href="intake.html" class="btn-primary">I work on contingency →</a>
+          <a href="growth.html" class="btn-primary btn-alt">I bill hourly or flat fee →</a>
         </div>
         <div class="hero-stats">
           <div>
@@ -551,8 +556,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
             <div class="stat-l">States</div>
           </div>
           <div>
-            <div class="stat-n">6</div>
-            <div class="stat-l">Core services</div>
+            <div class="stat-n">2</div>
+            <div class="stat-l">Playbooks</div>
           </div>
         </div>
       </div>
@@ -668,12 +673,12 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <div class="diff-statement">
         We don't work with restaurants.<br>
         We don't work with <em>e-commerce.</em><br>
-        Only law firms.
+        Only law firms.<br>Not one plan.
       </div>
       <div class="diff-body">
-        <p>Most marketing agencies spread themselves thin across every industry. That means your account manager is learning what a retainer is while billing you for the lesson.</p>
-        <p>At RightLead, <strong>every case study, every framework, every strategy we've built is for a law firm.</strong> That depth of focus is our edge, and it becomes yours.</p>
-        <p>We work with US law firms and no one else. Four firms today, in Houston, San Jose, San Diego and Atlanta. Small enough that every account gets a founder, not a junior.</p>
+        <p>Most agencies spread themselves across every industry. The ones that do pick law still run a single playbook across all of it, which is the part nobody questions.</p>
+        <p>But a personal injury firm and an estate planning firm are not the same business. <strong>One lives on volume, where one case in forty pays for the rest. The other lives on fit, and more inquiries than it can serve makes the practice worse.</strong> The same plan cannot serve both.</p>
+        <p>So we run two. US law firms only, four of them today, in Houston, San Jose, San Diego and Atlanta. Small enough that every account gets a founder, not a junior.</p>
       </div>
     </div>
   </div>
@@ -1162,6 +1167,20 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
      Swap in the real recordings as they are made; app-demo.mp4 stands in. */
   /* Each segment routes to the landing written for it. `v` empty means
      that segment gets text only. */
+  /* wording must match the Calendly answer options exactly, it is case sensitive */
+  const LABEL = {
+    model: {
+      contingency: 'Contingency (personal injury, workers comp)',
+      hourly: 'Hourly or flat fee',
+      both: 'Both / general practice',
+    },
+    spend: {
+      agency: 'An agency handles it',
+      self: 'I do it myself',
+      none: 'Nothing yet',
+    },
+  };
+
   const COPY = {
     contingency: {
       go: 'intake',
@@ -1229,6 +1248,10 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
         u.searchParams.set('utm_campaign', answers.model || 'unknown');
         u.searchParams.set('utm_content', answers.spend || 'unknown');
         u.searchParams.set('utm_term', 'watched-' + watched);
+        /* a1/a2 prefill the two invitee questions, in the order they are
+           set up in Calendly, so the booking arrives already answered */
+        u.searchParams.set('a1', LABEL.model[answers.model] || '');
+        u.searchParams.set('a2', LABEL.spend[answers.spend] || '');
         book.href = u.toString();
       }
       link();
