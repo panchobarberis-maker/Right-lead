@@ -8,7 +8,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#D4621A">
 <style>
-/* ── Tokens ──────────────────────────────────── */
+/* Tokens */
 :root {
   --bg:        #080808;
   --surface:   #101010;
@@ -46,7 +46,7 @@
   --fg-dim:    rgba(10,6,2,0.28);
 }
 
-/* ── Reset ───────────────────────────────────── */
+/* Reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -59,13 +59,13 @@ body {
 }
 a { text-decoration: none; }
 
-/* ── Layout ──────────────────────────────────── */
+/* Layout */
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 72px; }
 @media (max-width: 900px) { .wrap { padding: 0 32px; } }
 @media (max-width: 600px) { .wrap { padding: 0 20px; } }
 .divider { height: 1px; background: var(--border); }
 
-/* ── Nav ─────────────────────────────────────── */
+/* Nav */
 nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(8,8,8,0.88);
@@ -104,7 +104,7 @@ nav {
 .btn-nav:hover { background: var(--accent-hi); }
 @media (max-width: 680px) { .nav-links { display: none; } }
 
-/* ── Eyebrow ─────────────────────────────────── */
+/* Eyebrow */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
   font-size: 11px; font-weight: 700;
@@ -116,7 +116,7 @@ nav {
   width: 22px; height: 1px; background: var(--accent);
 }
 
-/* ── Hero ────────────────────────────────────── */
+/* Hero */
 .hero { padding: 96px 0 80px; }
 .hero-grid {
   display: grid;
@@ -178,7 +178,7 @@ nav {
   .hero-canvas-wrap { display: none; }
 }
 
-/* ── Geo strip ───────────────────────────────── */
+/* Geo strip */
 .geo-strip { padding: 44px 0; }
 .geo-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .geo-label {
@@ -196,7 +196,7 @@ nav {
 }
 .geo-badge:hover { border-color: var(--accent); color: var(--fg); }
 
-/* ── Clients marquee ─────────────────────────── */
+/* Clients marquee */
 .mq-label {
   font-size: 11px; font-weight: 600;
   letter-spacing: 0.16em; text-transform: uppercase;
@@ -231,7 +231,7 @@ nav {
   .mq-item:last-child::after { content: none; }
 }
 
-/* ── Services ────────────────────────────────── */
+/* Services */
 .services { padding: 96px 0; }
 .section-head { margin-bottom: 52px; }
 .section-title {
@@ -282,7 +282,7 @@ nav {
 @media (max-width: 860px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .svc-grid { grid-template-columns: 1fr; } }
 
-/* ── Differentiator ──────────────────────────── */
+/* Differentiator */
 .diff { padding: 96px 0; background: var(--surface); }
 .diff-grid {
   display: grid; grid-template-columns: 1fr 1fr;
@@ -301,7 +301,7 @@ nav {
   .diff-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 
-/* ── Team ────────────────────────────────────── */
+/* Team */
 .team { padding: 96px 0; }
 .team-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
@@ -331,7 +331,7 @@ nav {
 @media (max-width: 980px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; max-width: 380px; } }
 
-/* ── Our App ─────────────────────────────────── */
+/* Our App */
 .app-section { padding: 96px 0; }
 .app-grid {
   display: grid; grid-template-columns: 1fr 1fr;
@@ -398,7 +398,7 @@ nav {
   .app-features { grid-template-columns: 1fr; }
 }
 
-/* ── CTA ─────────────────────────────────────── */
+/* CTA */
 .cta-section { padding: 120px 0; text-align: center; }
 .cta-label {
   font-size: 11px; font-weight: 700;
@@ -417,7 +417,7 @@ nav {
   line-height: 1.75;
 }
 
-/* ── Footer ──────────────────────────────────── */
+/* Footer */
 .cta-embed {
   margin: 40px auto 0; max-width: 900px;
   background: var(--surface);
@@ -431,7 +431,7 @@ nav {
 .cta-alt a:hover { color: var(--accent); border-color: var(--accent); }
 
 
-/* ── Qualifier: our own pop-up, running on our own site ───── */
+/* Qualifier: our own pop-up, running on our own site */
 .q-scrim {
   position: fixed; inset: 0; z-index: 400;
   background: rgba(8,6,4,0.55); backdrop-filter: blur(3px);
@@ -505,7 +505,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 }
 .footer-links a:hover { color: var(--fg-muted); }
 
-/* ── Fade-in ─────────────────────────────────── */
+/* Fade-in */
 .fi { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
 .fi.on { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .fi { opacity: 1; transform: none; } }
@@ -536,7 +536,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <div>
         <div class="eyebrow">Legal Marketing Agency</div>
         <h1 class="hero-headline">The marketing<br>partner law<br>firms <em>choose.</em></h1>
-        <p class="hero-desc">We build digital presence, authority, and client pipelines — exclusively for US law firms.</p>
+        <p class="hero-desc">We build digital presence, authority, and client pipelines, exclusively for US law firms.</p>
         <div class="hero-actions">
           <a href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener" class="btn-primary">Book a strategy call →</a>
           <a href="#services" class="btn-ghost">See what we do ↓</a>
@@ -672,8 +672,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       </div>
       <div class="diff-body">
         <p>Most marketing agencies spread themselves thin across every industry. That means your account manager is learning what a retainer is while billing you for the lesson.</p>
-        <p>At RightLead, <strong>every case study, every framework, every strategy we've built is for a law firm.</strong> That depth of focus is our edge — and it becomes yours.</p>
-        <p>We work with US law firms and no one else. Four firms today — in Houston, San Jose, San Diego and Atlanta — small enough that every account gets a founder, not a junior.</p>
+        <p>At RightLead, <strong>every case study, every framework, every strategy we've built is for a law firm.</strong> That depth of focus is our edge, and it becomes yours.</p>
+        <p>We work with US law firms and no one else. Four firms today, in Houston, San Jose, San Diego and Atlanta. Small enough that every account gets a founder, not a junior.</p>
       </div>
     </div>
   </div>
@@ -688,7 +688,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <div class="app-text">
         <div class="eyebrow">Our App</div>
         <h2 class="section-title">Convert more visitors.<br>Qualify better <em style="font-style:normal;color:var(--accent-hi)">leads.</em></h2>
-        <p class="section-desc" style="margin-bottom:32px;">A smart lead-filter layer that sits on top of any law firm website — custom forms and intelligent pop-ups that guide visitors toward a consultation instead of letting them bounce.</p>
+        <p class="section-desc" style="margin-bottom:32px;">A smart lead-filter layer that sits on top of any law firm website. Custom forms and intelligent pop-ups that guide visitors toward a consultation instead of letting them bounce.</p>
         <div class="app-stat-row">
           <div class="app-stat">
             <div class="app-stat-n">+30%</div>
@@ -723,7 +723,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
           </svg>
         </div>
         <div class="app-feat-name">Custom Forms per Practice Area</div>
-        <div class="app-feat-desc">Different questions for personal injury, family law, or criminal defense — so every lead arrives pre-qualified.</div>
+        <div class="app-feat-desc">Different questions for personal injury, family law, or criminal defense, so every lead arrives pre-qualified.</div>
       </div>
       <div class="app-feat">
         <div class="app-feat-icon">
@@ -732,7 +732,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
           </svg>
         </div>
         <div class="app-feat-name">Intelligent Exit Pop-ups</div>
-        <div class="app-feat-desc">Triggered at the right moment — when a visitor is about to leave — to capture leads that would otherwise be lost.</div>
+        <div class="app-feat-desc">Triggered at the right moment, when a visitor is about to leave, to capture leads that would otherwise be lost.</div>
       </div>
       <div class="app-feat">
         <div class="app-feat-icon">
@@ -770,7 +770,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
         <div class="team-info">
           <div class="team-name">Sabrina McTominey</div>
           <div class="team-role">Operations Manager</div>
-          <div class="team-bio">Runs delivery day to day — process, timelines, and keeping every account on track.</div>
+          <div class="team-bio">Runs delivery day to day: process, timelines, and keeping every account on track.</div>
         </div>
       </div>
 
@@ -825,7 +825,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <p class="q-sub">So we show you the part that actually applies to you.</p>
       <div class="q-opts">
         <button class="q-opt" data-k="model" data-v="contingency">
-          <b>Contingency</b><span>Personal injury, workers' comp &mdash; free consultations</span>
+          <b>Contingency</b><span>Personal injury, workers' comp, free consultations</span>
         </button>
         <button class="q-opt" data-k="model" data-v="hourly">
           <b>Hourly or flat fee</b><span>Family, estate, criminal, immigration</span>
@@ -839,7 +839,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     <div class="q-step" data-step="2">
       <div class="q-tag">Last one</div>
       <div class="q-title">What are you doing for marketing today?</div>
-      <p class="q-sub">There is no wrong answer &mdash; it changes what we would look at first.</p>
+      <p class="q-sub">There is no wrong answer. It changes what we would look at first.</p>
       <div class="q-opts">
         <button class="q-opt" data-k="spend" data-v="agency">
           <b>An agency handles it</b><span>Someone is running it for us</span>
@@ -859,7 +859,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       <p class="q-sub" id="q-answer-sub"></p>
       <div class="q-video" id="q-video" hidden></div>
       <a class="btn-primary q-cta" id="q-book" href="https://calendly.com/franciscobarberiss/right-lead-services" target="_blank" rel="noopener">Book a free intake audit &rarr;</a>
-      <div class="q-foot">By the way &mdash; this pop-up is our own product.</div>
+      <div class="q-foot">By the way, this pop-up is our own product.</div>
     </div>
   </div>
 </div>
@@ -879,14 +879,14 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 </footer>
 
 <script>
-/* ── Globe ────────────────────────────────────── */
+/* Globe */
 (function() {
   const canvas = document.getElementById('globe');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
   /* Coastlines and borders (Natural Earth 110m). Arcs split on spaces, points
-     delta-encoded at 0.1° as polyline varints — see decode() below. */
+     delta-encoded at 0.1° as polyline varints, see decode() below. */
   const WORLD = 'inB|IK@@JL@HA@IGEG@ noB`IAFq_FDLB@GICQE~_F? eTRkAh@AJ[R oW|AHVAJKDBP?NEJIREB eXlENJTFJ?DDL?\\CL@ sTdFDYFITI oSvDJEJAFCHE eRdDHWJKBKAIBQ iQxAOGGICKBK aRn@EMFK _RT]Ag@? lDiP?D lDcP?\\`A?Ap@R@BHC\\lA?DD tIcLAG rIkLk@AKOE[[UIWKQQAO@ECK??KA? vkAs]h@SLGb@GJQCKXIBOVM?I ppAga@II?K`@MRULMPIJGJIRDRJNMLGRER??qB?iA bwAqj@e@B_@HS@QGWE]@]G_@EMFMCEIM@_@P[MANWCGEW@_@Fm@F[BSAYHZHc@Bu@AQCSJUIRGKGW?QAOBSJUAa@H_@C]?BKQC_@F?PKOO?ISTKVGAUWMY@SH[TPHe@B?RYOWLDLSLSMMQAU[@]@YHAHNJMH@Hd@LZ@TEDHPPDFVLZ@NF@JTBXNRTFN@V]@GRIL[Ce@FSFMHWDUF_@@U@@NERMT]ROEIUH]LK_@GUMKM@MLQVMWUHQD]MEa@DS@QCQDWJEFc@??PEVQBMJ]KSUKGOPYVUVFLYHQJ_@DMDGNMBGDAVLDLF`@DVP`@@j@C\\?R@NLXF\\ZTPOC_@Yi@O]AQHPJETENYHa@CSU?LMFVJl@JPFVNLA@Qc@O^?TB |h@e[LK?[FELBDCNLDNFFFBFDb@?^?FBTLFHP?R?H@EHXJTBTHJAAKIKEKBODQRIDEBGH@DINENGPERGPD\\ENBRGRALAHMFFf@?dA?bA?x@?|@?x@?z@?R?z@?v@? ns@af@OGY?VLL?BE zp@ol@TIIIm@@c@JRBT?TBDA dq@ye@GEKBFJFADEAA ny@{m@JFZAVCII[CQDGD ry@mo@n@ABCg@?MB@@ n{@gp@WFBD\\DNEHGYEI? `v@om@`@Ar@EFK@IRGh@ATGGGg@@UDg@?QDDFWDKB[?[@_@Cg@Aa@@SFEFLBZDXCx@Bf@? pdA{o@[BDDd@DZEOG[A jdAgp@YBVB^?SII@ va@a_@HJLPMEKBDDQDGESFDLMCAHGLHNTACOZLJ?MIRCR?f@?IMFCOKS_@MKOEI?BD ls@ug@UDWD?HOAMFPD\\EJGRHZHFIX@OICOEQM?CHICKD fp@gl@SGk@J[FAHe@ESLo@FQFQPb@Hm@J_@D]P]?DL`@VVG^SX@@JSJ[HGBKRDLXCp@O[NUJAFt@Gh@KVIEE\\IZIx@HPGMMe@?g@CDEGIWSBGFG\\Ih@EMCTMP?NGHDb@BfAEj@E^ANGSGZ?DSOQSGs@ENJOLQOs@Ia@TBJg@E `z@im@i@?e@B\\PVBTNTAJO?IIISC xkAqn@a@Oi@K]?[A@LNFP?d@F^BZC |qAw`@SAFTQNRGFIHE@IIA |`Aqp@g@@u@FMHGF^A^El@ASEVC@G dlAi]H@`@GDGNEXIDIUAKBQ@GFIFSFGJ |jAom@[Bq@?SDUFXDn@LXLr@PHGl@KGGMMQMRKcAA jbAkn@QCS?CHJHbA@p@H\\?e@OxABZC[SQEw@Fc@Ja@?ZQQGS@GHGF paAul@UFKRELa@Hc@H@F^@KFDDb@Ab@ET@d@Dp@Bb@@JIXEP@VOKA_@A[?YCd@Cj@@Z?HGm@G^?`@EOMMGu@KSBHFm@EYHWIQFOPIGLSQAS@ v}@ml@TMUGWBc@CEDRH_@FBP`@FPALEp@Oi@C raA_m@Y?OBPJ\\MEA p|@}n@OF?JHL^@TC?I^?@MU?]E[?AA ~z@kq@MESAFCm@AYJa@B_@BOJWFZDb@Lb@@h@ATIQKd@?TEJIMG fx@er@]CW?e@C]GW@UDOKYAc@A{@AK@y@Ai@?k@@u@@i@@c@Dn@Lp@BPBk@?l@J`@D`@Nf@BLBz@@[@LBOHPD^DHFZDe@Bt@Nr@Ex@B\\Ad@A@Ic@CHMMAs@HXM`@COGc@CEEZGFKu@@O@_@Gl@AdA@b@GNGVEBE ~m@ci@LDT?BIGIQCOD@J d{@mj@MFLDXEN@ZGQEMGSBKBEB hg@e^_@BUFHBXEPI ~f@k\\EHO@Q?HF^GDEGE |h@e[ADRHTDRDHJBNEHEEEBLFXBR@ND]CTHL?BPLNDEDECHCJDFHNCMHGBO@FCJLAMD?PGFCRLNRDLJH?HFVRJHFJBLCLENILG^?LDRN?@GFEHOHOBGCMBINOFCRHLKJCT@PAN@F@CLFBFBL?LKP@LCJ@PBPNRFHHDF?LAHCD t{@eOTCNEDGBMJKFKHMLGN?JNNEJEBIDIJIHEFG`@?NHf@?l@M\\IVAT@ dhAiSBIJKHALGDCRADORSN[HILQBOHICO?QDOGQAQAQB[DODI_@BIPEEBODO b`BqKEBEFFDHDBGBGCII@ n`B_LFBDEM@ ~`BgLH@IA vaBqLEFJCEC rbB{LF@GA `gBwd@O@HHJALESC v~Agc@K@IDPHRFHEBIQEKC ppAga@JGPEBQXOJQPA^?VEh@SPCb@GZ@d@IVGTBCLJ@TBPDTBBIISUEDEXJLJZLMHPNTFRDDF\\HDHVFL?PBRFPD`@DSKQEUKWAIG[KSKAMKKVDPBJIDDFIRFJ?@KCEJGXBPIJC@KLGGKOIEIOAM@OGO?MEBGHCMGJ?TBDDLE\\BZEFGXK[Gk@IO?@Hi@?NKVGLIRGZGKIc@?WIEISGSAe@IQ@]K]DOFGCa@@]FSAi@De@@O@YC]DUB hjB{f@KBKAODS@NDNCFCP@@I su@w]NLN?@RHHf@ELb@JBd@FQ`@LDAH eq@oYLAHGZA`@?b@EJB@J`@EJ@BF kk@mYJBXLHLJGXABOFSVM`@@V@PQPG\\Mv@HAhA _b@yXH?LMLEVBFD y_@cYCKBGVEFQJESC?MQCO@CQBMR@NCVFPB u]_\\HCAIJKN?NMIOKYSJAMi@U]?k@LWFUG_@AWJEE[?EI^MQGOKLMGEkAGICq@GQGc@BETSEYF@HS?q@SFDYNk@p@KIYJ]EIBIJMBGFYAKJ kk@mYJNOFMEWHXNNA kk@cXHECIZDDJHJNADHOBCLJT ki@eVLEJ? qh@kV?KXGRILITMHSFCR@FC@OZKNJPFCHT? cwAr@a@Le@JMHIHCJ_@JEHP@CLQJKTK?MJOJNFBEPARCNKHKJOXINDJDANNDHATA cwAtD?_A?aA k~AhAGDAHDDBKBGFEJILECCKDEBGBGH q}ArBHDJBH?NEJESAIACICHK?EGIE@KKACNDJH@BB w_BhBEDGJIDFFFGHKBOEB cwAtDPORCBDX?GOMEDUHOd@QN?\\SDHJENQUEM?^EFKPCFI[CIE_@FAFE^UJOUUKQ?QFMDUB cmApDAH emAzDLLNDGUSG {rAhC@OCECGCDHV uhAqAJPMP@HUPV@DL?PPL@RF\\@ETFFKLAHEVFFIL?NA@YHEHO@QAQKM qcAg@ALMHMCK@KIIAQDOCI[GGGUU?QB {oAv@UDENNIN?J?L?CKY? inAjALCBGSACFDD }nAk@AJK@AF@NHA@LGHLIDYCOEG ykAQW?SMLVLBRC^?PBBLQPKGc@G?HHCFJPFSXBDQV?JJDFEIORFBEAGLKASLDAV?ZJBFEEQBSLMGMAMI_@CGQMODW@ ejAlEXMQCIDGDHD yjAhDM?QG@J\\BZAOKKD }hAfDKACFTBL@J?GIIAEEGD ybA~Bg@HEGc@FGL]BWJTFTIP@TAPCVGLAFBb@GBIP?MSW@ODG@ g`ATALGHM@ILBV@^T?NQXOFKNOHMN[NQDOFOPMHONKRU@IK@_@BQPMLKFQTU?OLKNMHFNKFG? zi@z_@EHILYL[BFHR?HE zh@ha@J?R??m@ ~b@zQDNBR?RDP nc@dT@HYPBLMF@HPX\\Hf@BTACJBNCHJDTBPGFDARMDIGEJPDNJ@RDHP?NJDLSLSBFPVJJVPFFFETKJFA zi@t_@PCn@AFK?ML?DE@UOGEM@IIOEY@KICJKEGFGDUICBYCSEQKEDS?QMM?OKS?QLe@KU@QEQMSMKDGCE?a@UIES@E |h@dMOQYDKLGOW?AB df@zLe@`@O@WNSFCFR\\SDU@OAQOCQ ba@`OICIJ?NPJLFTRXX zh@ha@DFNDH?JANERAXKRIZWQB[LYFIIEMSGM@ nj@~IILALKFFRKTGZMC zi@t_@P?FBPFBP^ETMVIFMEKHK@a@GSUO\\EQOEa@WFIi@LEDXJCE[Ee@IKDS@USa@M_@I]D]EO@WKYCe@Ei@Ek@@_@B] ~j@lJICEI eRdD`@@JNEFBV@RQJGPNAFIDGNCBIJDNAFIJAHCFA }MxEF?L@J@?WDG@KAKBG?KV?FGLDBHL@RDFKBEDKDMx@?L@F@ uFxB@E sFrBEKIG cG~AKEI?IHKMKGCG?OGSIIKICKAG?KAOCMEIAK qJeA?MGIKEODKFO@MBEKK?UIGBIEU?K@GA cPgBKNG@OAICEFOL gReA?VG@DFFBFHBH@NBF?L oQXDD?JDJ cQv@EH?V _Y`@JO?iAQU eYmACEMAQMY?w@{@ {\\_DMOGM?I?S?G q]cFOCKAGEGD@H?JBDBTHTJXP\\PTTXRP\\PRNTVBHBD eTR?UEGIMEMFW@IHM gTuAKIMM aUmBIB?HGFM?WNK?QBEGQIGFM? _Y`@LFDFHNDFBJFF kNcDNIDEAMJS@G iM}EFK?KBEDGEG@GEEAOGOQ@@oA {MgKWG?g@ sNwLoA?mA?oA? aVwLER@VGVGBIF _WgJHJL@DD@LH\\AF wU_H@NFRJHHN@FFDDR?P gTmD?OBIJM@MAOH?JBCDAJHJHLJ@NKFBJHRBPCD@NKPCDHDPDBGH iM}EL@HFLTPHRABHHDFFXFFERF qHsCBS@GHCHICIG@QAJQAM@KFM aHaGAGJA?KHGIYWQAYGi@CGFEFKB_@ iHiMSImAd@oAd@ xk@iKAHDJCD?D xk@gJLCF@LAFBJEUCM@GEHGJIOEQB xk@iKQCKDGDK?GDIFFFHCN?HBHAFLDG sy@sq@i@Eg@Jm@PDPh@@v@C`@GNMXCs@M g_Aqp@s@JDFpBFe@YOAM? wuAqn@u@?gAHNNhA?^Bf@MIKYC s{Aan@q@BTF^Ad@GEEc@B mvA{l@QGYA[FZDh@A@A _[kq@g@C]?O?QA]BFBX@P@XDTCKGl@? eM}`@b@?VA iK_a@CI[E iLoa@SBI@@J m`@cm@o@ODIm@IaAMaAAa@Gg@AMFLDfAHz@F|@R\\R^PCPe@NJ@~@CDGb@E@ISC@Kg@OPC ixAq`@GR@PGTU`@\\EJZQT?LNKJLBOAS@UCMA[JQA[QIFGICCL wpAkYBC spAoY?II?CWDQQEWBMSEUGGIQ^DPF\\?FQVM`@GFQFMDGLSNG\\EZ@V@NHID?HHFPRZTVG }gAe^V@HEJA\\LX@PDXCP?JIRIRAX@PBZGBOVCPATGTRGJPL\\ER?LIR?PE\\Hd@NRB {u@y]F@ u]_\\HJPBRRQP@LUV k]cYJFJBLKDA _\\eYJCDGRCJ@\\K\\CNC@B _XcZXQVGNIMCOOHG[GPA {Vm\\KMQA?QGI\\KJ?JINBVGFKNACIJIT@H@F? {Rq_@DKBGS?GEDCLCDGJKAORCH@VI sPcb@DK@GHE aP}b@GEDQMK@C oPed@UIRI qPyd@i@YQKGI\\MGKPMMQTUQO^MCM {Pej@OAa@G mRoj@SEa@Ju@BkAVOF?LTH^DxAOLB_@LAH?RYDOBAGJIMEo@JOEJMm@SQ@SDIMNKIKLKw@FIHV@?JMD_@CCKi@IeAQO@RJW@MEe@A]GUJWKTKKGy@F[DgATMIRIXGGGJOc@WMQMCu@BCJRNMDELBZUJHLd@ZU@GEUEEIQIJIGMTABIOSXOc@MBMIAIJFRU@HMa@Gi@?c@JPQ@Sa@Eq@@i@ANKWKU?g@Is@CECu@AOBk@Ie@?CISGo@Ga@DZDm@@CHSCy@?k@HOFBHTDr@HNDWB]BQCILIE_@C_ABCHsA@AMi@@_@?_@JIJJFWN_@FSS_@Fa@Ee@FMEa@@NQ[GsDJQJs@NoACg@@OF@NWD[Cc@Ac@Be@Ac@PWENMIG}@Di@Ay@Hb_FFq@Ns@R@JMDDOu@Bg@PRH^@@PFBP?NEXEBIRAV@HECGVBIHJF_`F?XHXAQHKNIDAFDDb@Cv@LP@^NZJFFZMr@NHGPHZCDLVRWJ@ZR@FNGF`@JFT\\BDTZPFMF]Jk@I[QK?G_@Ea@Wc@Sc@OO]V@JPr@TNYr@Fp@^OLj@B\\@?M\\CXHz@A`AD~@d@lAn@_@@IJSBKIU@[TAPNR@VF^\\ZFLXVZTJJZJJ?JIZL@F noBuk@SA[DTFX@i_F?h_FM {Sw[ECMBIBA@ {Tq[IDSABFTBXHJCCGREUKBA jp@wOIAM@TF@G ro@{OOFBL@KHG?A zo@wNMP?HHIFECK fe@j_@WIOBMGOFDFZDFGPHHI mHyp@GE]AYF_ALp@FHNPBHNV?h@KQE\\Ef@QNOw@EID[? {Pej@GMXG\\FHLRHREX@VKJD {Kej@J?@Ld@CDJP?LLRT\\ZEFDFRALRAXKHDVNLHH {Eyc@JKf@VZBXIFUDm@QKu@Qe@Se@[o@e@_@Ow@Wk@I_@@]Oe@?c@C}@LXDUJ cPaq@\\Jx@@x@C^ETG}@E[BSEq@Dg@D mNuo@j@Hb@EMCJGi@CGF[B f\\sr@cAKeA?YEeAA_D@}BNd@FjA?jB@IBeAA}@De@EOFTHs@E_BG{@BKFpALHD~@@m@@VLNJ?VWJ\\@`@De@HCPT?YPj@@WFFDZBZ?YLf@?HD[BYJEN`@BNGVIEJVJu@?[@t@Nt@Nz@FT?RFZRj@LJ@ZBZBPL?LHJ^NGNHNHRZ@\\Qf@?PILS`@WHMBQZQGMLGSW]EGGCOTDJBP@VE@MGIS?g@B`@KPER@NEUQJGNMVSXGt@Sh@At@@n@?VE`@Ks@Eg@ArACl@GAGkAIiAIGGt@EQGcAM]AFIm@C}@C}@?UDs@Io@D[@i@Dn@IAG aj@j]MDQBBJ^@?KCG?C cmApDQIM?M?DDTFND eIzPIIGDCFG@M@I?QI?iA mKnNQT@JCDMAIGIECIICG@IDO?MCCOKAEGEKQO[M kQxLQBQ? oR|LIZCL@T?D {RbOHADDDFKPKACI aStOM? oStOBN@NDHLHJJDHHLVTLJLFTFH@L@HBTCJ@\\FN@JFPENI@MFMEC?MJSHONY cQbQHGFDJDHLOLIGIAIODE t{@eOFPBL@Z@HCHEHCNMLCJGHUBGHQEMAOCKCKGEK?OQKUCO?K?ELJHBL?JBLDCB? dv@qJHJD@ tv@cJR?P??HEJEDXDHN?N rx@aHVUHENEJ@NDH@LCLCPINATIPGBEJAREFGTKHKBICGCKDIFQPSRMHMPG?OHEJIBMJ?JKFIJSFOLOPC@FAHALGFMLEDEFCJEDEDKHEREFEH?HI?GHGFHJFKJKNIHC?O@IHELIDALCJKI?GGLWJEFKFKFOFQ ~b@zQKASN[JOHKLFHCJ j`@bTFJTJNCH@PIL@JK ba@`OCIAK?KFCDBHG@QPKFBRC?[DI jc@rKEC@KEGCOBKJE@GCKf@?DWCIBOJEJ?FELCFGTATQAM@GAMX@JFNFDDH?L? lj@zEJ@FA?]NJP?FKJ?CIJKFQEKKE@ICGAGWMOCSA tj@tAIu@BUFE?MICEEJA?Ke@?GECDCJCC xh@YKJOAAEOCGCAGMEPE@K?MFEQ@OBECMCUEGG@E |d@gBI?AJKJDFBNEJAFKHI?GCGCGCI?E? hb@e@I@?MQ?KB `a@m@GBEEGDI?EGGMIS h_@sAKJK`@IBALNNEDc@@?ROKWDa@LIHBJWEe@H]?]NYTMDQ?GFEVCJF`@HJZZLVLNJNAd@D\\@LDFBXRX@RPHBJT?\\FNFTDTNPR@LAJBRBHLHTb@PNLFFRLJ jc@rKPOPAb@DHP?JFT nj@~IKUFOCG@EGI?Q?MCEN_@ ~j@lJRIf@[b@UNMFOL_@Rc@Pg@FIFMLMNGGGHSEMOK dq@bAAFDDIBGBGHKIAKMQWGUSEMBM bn@BSDEHGDKRO@ICG@K?OFLROJ bn@BFEHET?DGVK hp@[EG@IEEIAGKGIFECKBQ?UFI to@oCAIKCDKAC jo@mDK@MMGACWKIK?QAOIGEGGMDBD pk@kFLBBHFDDD@NDHI@AHEJ?JGFYAK@MPGAM?KAGBBHBF@LCLEDHLGBCFEP to@oCDEBKCCFGHEH@BDFDDBIJFBH@BKF@BGLCFBBA zr@cDCG@IGI pr@_EEFGBGBIAGCKCEEK?IBGBGDEB zr@cDHC@MDCFCFGFDBCHEAM?E pt@}EO@I?IDCC hs@yEEHGFIF pt@}EFEFGBEHGHGGA pu@cGGEAIMCKAEEEGIBGAIEG? |r@kH@LBD@F?L@J@FBHCH pu@cGHG zu@kG@IJ@DEJE zv@_HCIIGIG bv@yHKCM@OAM?GAI@GDEBG@ED zu@kGLBNEH?DC hw@qGGGEE tv@cJ?N@TE? pv@}HEBG? hw@qGHCJ?HCHG dv@qJCFBH?H@JDDBD pk@kFJFEF?JHHGNMOFE?OWG@GGGELM@MHQFUAIFO@KEWEW?NDEHO?OHANI?GB jd@gDNJENPDBLMN jd@gDMFKL?HSHGD tb@wBBPJD@LGNIHKP tb@wBWBQCSB v`@sBHPALGJBF@HBF v`@sBUFUNAF {B}]ID[BHL@L uCw\\N@LNIDEF gCw[ELFDELKBBF sCiZPJd@E\\D@J {@qYVBTIFBb@GFG d@cZIKCg@RUNI\\G@MYCa@DDWQHm@OEOQC q@}^KDIFMHIAQH qB}]I? mDsYMGCNFNFCDMCE dq@bAIMBIFHJIAUIOGMIKKG lh@qJI@?FN?J@AKO? no@qJM@IBHDP?HEIEC? lr@oMQ@O?QDGFSAEBQJKHQBMDMFNFJ?LA\\@MIFEJ?FEBKJ?PCDCXCFCGCRALHJDF@HAKECGGCICOACA kQxLJINADKFITUDKJS yN`JU@K@KKQOGIKGOA }QtHQFGBMDID?X@L@LAPHNRV mKnN?{@S??eAOA]EGFKGQC uN`JC? eIzPLOFMBSDMD]?W@KFGHOJWBMNQ@O iFxIICKCM@KFsAAMHo@@c@G oM|IOCM@GB?@ lIoGFOHEGCIMCI hIaIGGI@ICI?IDMDKLKL rFcHAJCJEDAL dFwFLARAH? pG{Fb@?J@J@ lIwF@O nIgGQ@GCGCGBQCJALEHDT? rFcHGCAKSDKCKCoA?CMLwAHwA_@? `BsNcAj@aAj@EHKBGBAJUA uA_K?l@JL@JPBX@FDJ@ GiHL?NAPFBFNFHHHCDD@LNNDLAJ jBoEFBFEH@PDFA ~CkEDEDECKFGDIH@JFFADEF@BE lDcPkAn@ hIaI@KEICQBS@IAIBIJG u@}BNB e@yBDMAm@DMDGDEAI Q{EIIIAEE k@mFEEUH gAiFCRBFFPDDBJ?J?^ aHaGDF {GyFPURJNEHAP@JFH@VIHBH?FGRGRBFLDF@P k@mF?MVE?GJM@GAI uA_K[Gy@g@cAe@ oFuM_@HIHOG {GyFGFBHNNDJ@JFPJF@HDF@FJFJIRJLRDL iD_BRFNBNAHKFMLML?P? qHsCHRDPAHGNGPIDAL _Im@@JNENCVA eGm@L@JAH? aFm@`@? _Em@COFKHCBIBG e@yBNB UuBDGBK@ICQBG@O?MFI?E ?{EQ? UuB^JJDPDPE x@cBDYCUGOB[ v@_EBOAKa@?G@OA jBoEGBCFIBEEI?MD x@cBTCJ?VBLDRFBA xCwAAO?IFGJGCG@IAE fDyCCGGIDOBGEG fDyCHFHCFSF@ jEgDDE@KBGDEN?HBDHHF fGqDHKFGHE@IFE lH{EGIKCGA?O lH{EJIJEDG@C xCwAXGPOPIJM bFgCCEIOII bFgCRIHIBG@M qJeALALAJHHP kNcDIFMNGHEJMDCF cG~AFGLJ mFbBNS }EnAOKFKEEMAAIIHQ@EIAM@MHKIWRADIAI }EnARSLQJSCKEOCM }DSc@A?W }DSAY oSvDGHENFTCNDFDPID wSvGz@NAL oM|IJKLO?_Ai@?AMBIAI@E sTdFDNEXMDGLAXHBDLJK@MCIFKPG eXlECH@RCN?^CHDLFLJJRFTHTTF@LNFB@LINCHAX@FAJHFNDVJFDAFAJ aStO@GBI sFrBDO iFxI@KCQEQG[CGKKEIAM?KDEDKBKEKDSBMHKAC cQv@K@EKK@ iUmSBD eUgSHH@HIA cUuRHf@ yTmQJa@ mToREECKCMAE }TuSICC? kUyS@J?? }TuSGOIM?? oUsTG?CFHFDH }]xFEFELAVEF@HHE?T@FDB@PFTHZJd@FZFTNDPFJENEBI@QFO?MAOIAIUAMDGBM?QEIAMI?KCGCSKOKEI@GG@IMAKEIEH eUgS?J@D nIgGAG }D}QFc@LGNO@OKKEOBQCI gDaVUIMB?HOGFLEL@PJHAHK?CHGB eFuS@LHDDDLFCF@HHB lDiP?U_@OSAQEEIWGAMIAIGYCCGJW@KFM j@_USIUCKGSEa@C_@AIBSGS?GBM? }D}QEPAFBPAFBJAJFFKLGRICOHGJ iUmSUFg@U gW{SGV oWcSj@LSRDBRFBFFDTC {TkQ@A g_@cNS?O?K@MMMKMM ab@iOCF eb@aOAN gb@qNH?@JDFDN?F oa@eM~@EFS?C w^oN@MEIKB?JBJ c_@kNJC _]wQCHCP g]{PL@BIPA c\\eQMSM@ gW{Sk@SGW@OICIK mYgVICU@GDIC _[gVKVMDAJHFDLMRWHIN@LEHKJ k]uQJA c\\eQd@Av@g@\\MVE gb@qNGLKDMBK@IJCDGFFJHJFLHADNAJJBJD@HNBFDHLJAJDH? e`@mIDKNa@ o_@{J{@SMg@HM ab@iOEE?H@B ogB|HKJJE?E ggBxHBUIDCNH? c_AsFDWMOYCQ@ w`A}GOFIMQF cbA{GCL@V`@LGJR@PF e`AqENAFKHS c_AsFPGP?COP?@TH\\DN?NM?GPCPIHKBIH y~@{BDFJ@@INGB@ q}@aCFEBIHKHIBJBICMEQ s|@eEGUKQFQ@SLOBIECGQFKJOHOGCIUMAIGKC q}@wKGDAJM?DTAPSKQ@CEO@MNARON@PDF q}@wKCGQK g~@kLKB@UIC {~@aMKNGPW?GPJDDDWJOVMPMLELBR s|@eE@OEMFKAUFIDWBYFOLHTLJAJCEYBQNWFILO wx@}K@OGB?M }x@wLIE@GCE?UOBIO?IKO@KYMMB?KEC@G y{@uPK?EJIB?N?NRN@VUCCRKBDNOFG@MCAF {~@aMICO?SAOKIFQB@JGFSB obAoLXPNPBLMTSXQJKNGd@@`@NLVJNPVPFKEMNK wpAkY?? wpAkYNDDD?LHBJHJBHB@JG@KH goAcWJDL?FHH@ {mAqVHCFBDC?KGQLEFC ulA}WOMUIMMGDQ?@I]GGKKJ goAcWOVEJ?VFHPBNFP@@ICOHSOCLO }gAe^HNLRCFKCSBOGOFQLPB\\@LDLL\\FRHTCHAJJGFJLLHVF\\?^FTHHEV?\\KRCXBf@CV?HKHQJCVKZAVCDGGWLOZGPIBM }x@wLJ_@FJHIEKG?IQJAP?RC@MF?NGFJMJJDBFKDBJGLAN sv@yL@FL?VB?NHHZLVVLJRLHLPDH@DNCXANFP?`@J@FNEDPDFJFDPQH[FSDIHQDYBKP[Fe@DY?WBSZJLAXWGGDETQ si@yMKMk@?BOHI@OLGUUW@SUKSSS?MQKNIFKFQIG_@BUCQO so@eUUV@NGH?HLACTSJ[L uq@{QJHFPSFQHYH[BKHM@WBQ?AGBKAI av@mPKCAN ov@aPQJMCO@O?AMFE ix@kPOAQMWMODMIILFFU@ wx@}KDI@IBIFKP?AFDJHCF?FA ov@aPMMIEMBK@GB uq@{QGCODSJKBEHOBOFWBU@ si@yMNCDOLMd@B^?Z@ me@uNGU[K@GFC@QPGFKHI ae@sQ_@HSCKBQCYGAOIKO?QGMC?KGKKEFKS?EEGQ@IBGIGUCWAICKA _n@eVMFEN_@F ki@eVUCE@EGK?EIGGIBCF@NGFGCGAMIM@S? {m@kVCD ae@sQQQ@MNA?MFOIIHCEMGW ge@gUSDOACIOAIECOQCAGIDE? kk@cXFDRC@JSAYDe@A am@sWCPS@AR eq@oYb@NDFX@FLRCLBRH@H ge@gU@QL?VQNATILAFBLALJPB u`@gVBMCUNEEML?CQSDOGLKDINB@NDM _[gVJOCEDUME _[yWCFIFKB y[eWGA a\\gWWMMBFHKHE? q]}VELQBMH]B]EAC me@uNd@ETCTAFYHAN@RHVEROREJQNYH@LEDF oUsT@OCG qUkUKI?IGBUEIBO?WGI?UA y[eWFKFCDCB? _[yWFELEAGBG gZuX[A c[wXKFEJDDGDI@?L {Kej@[H]LA\\EF }Mgh@`@DRLCJ^Nf@PLZMLSHPTTDF`@HPVAJNV?DQNUN] {Rq_@P@DB?HXAL?FCL?VCRAL?JDH? uMg_@DQKCDO?G uMu`@Q?UGEIOG@G qOwa@KCUG {Vm\\N@JDR@ND?J {Sw[`@EREDJNL oQi[FCHBHC sPm[IGCGQ?BKBGDCFKVGJ@DB sOc]LBL@NAJ?LAFB eM}\\JI yLg]CGEE cMu]OWIAFW cMu]RGLBHAJBHGFB?A yJ}]HIN?LIL@LGHE kH}^FKBQDGECDK yGs`@ME_@GWGSBUD eM}`@I@ED sIa]LF@N cIi\\TBHDNA sGa\\ZEBERBN? oEi\\H?FCAG _Eu\\OBSCMCI?EB?OMK oGq]MDKGUDIAIB sIk]?H eM}\\JBHLJLNB sKy[JAND wJu[D@PCLGDA kIa\\BEBA sIa]IBW?ICICI?KEUDCA sPm[@GAIJSFGDEDA oQi[HHHT {PiZJANGTDHB\\?NCJE eMsZBIFBHELKLM iLoa@BO eL_b@UEa@?SAKDSH eL_b@?OIKQGONO?CO eNcc@QCGBQDO? eNcc@AKRC@KYEYASBUA kH}^F@H@NBDBNBENIBKF _Eu\\TERB {B}]BK wBi^CM {Bw^BUK?CEEQBG iCm`@SCQEBG@K iDka@OBKC eEka@SJUBIEUFID {PiZJFDLEJ oPgYPARD iOcY?HP@LGNDL? kMyX@MHE _MmYCKGEHGCK mOaU^FVGCGIDO?O?I@ iOcYIBDLB@ iOoXLAH?VBMJH@J?HIANIHFBIHID?HPCEHJ@GPL?NGFOBMFIHI?E sKwWGIGI?C cLoXMAGEI@GC qUkUDIGGJ@PCLJ\\@NITABFLBRKT?JSLIIOJIUQ]AGMe@@WKWEa@?a@L[FWCQ@WI _Y}XSASH oPgYAFQDZDFDNHFGAC sKwWNM@GAM?I cKeYEOG@ qKsYGFAD {KeY?NGD wJu[EFEDFD {Ja[FCL?PALBDCDFIFEFGDGDGFQF sJsYB@ oJqYPEJGPENMDIJIDFDE?G qGm[M?I?GCIIOE oEi\\HJLABFH?LBH?HC qB}]AKC? q@}^OC aAa_@M?SCKHKB aAa_@IEQ][GO? rDeYECGCEHK?MAEHHD?NBJF@GJDJGDHL?D tCeVFDHCH@CO@KHABEAMGGCSBM?G rDeY?MFG[MW@[?UBOA_@@ {@qY?JPLXBLPFNGJJFBLLBLLX?R?JFFFHADGDIRC zBu`@CLNPb@JZAOUHS[OMG vCma@CHBHK?OB sfBdLOJIHFBHELGLKJMEEIFIDED idBpEEDL?FKKBC@ adB~DPMBKMNGH qcBdERABKMBEBCD wbB~CEDNCHEFGKBOF eaBjCGDJAFGKB qmB`XFHHLNFHGIODKTGOMAO?KFMHKLQHMSHMDEPMRAMGDCNODK@KGI@BPDJNADDAH@B aiBfZOKKIIMGEAIMICFCFOGCFDPLNHFGHN?NDDLJRNHHBP?JETABEIOYSKCOE i{AnXK@AVFD@NDELLPAJO@MJOMGSDIAOC ymAbSRHPDBHDFP?J@PCL@L@JHNBHFLAL?RKJC?KIACKAM@KHSBK?IFMFMBOHOBGIFFQIDEF?IHODKAKEM@KGMALGMQEGGOGIASCKAIEI?UEIIEIIIAQMQGPICFIEIIBAMIIEGICGCIEICMHKJK?K@BKIOGCEQKEI@QC?INEKCKDKFOBQBKCKAIHDHFFBFDHFHQPODIDMJODUJMECKCGAKEO@G@QCO?ICICKGKEHAJEHEHAJETMEEFIF@FCPAHKR@HELUHMHKFIPGRGCGHGPMJIFONCNAH@LIN@PBHBP?HBLHRLFFNDHDPFHBLBLHLT?PFHFJFNGJCAIHBPLPEHAJAREJKBOBIHGRAEIBMHLPBKKAKGI@MNPJDFNNG?KJMHGTOL?RIb@@XDTFRA cr@uCBRFDPBFOB[G_@MHILIT mcAkJNE@QIGUEK?CFFFDJNH ulA}WZDNFRDIIBGOKJINDVLJJR@HHKJOBOLUMQFM?AJZBHJPHHLSHGRKPMN?NJBCJKDBNBNJ@LRNZPVZPZNT@JHFEJFZHRBFTH?DMEGZEH@ ckAgNJ^HNHO@OKQOOIDBJ sGa\\@HCF uGo[NANDAHCNQHINUNO?QNMDQH@JJINAFJMF@HRPFCCKBMDIFCDGJCHGLANGPMLIDSHANGHBJFF@ gHyVMADN@NNGHAZICIU@UA mDqXIEKL@XH?FDFE?WBKI@ iDka@FI?SGKQAGCOE@HBDKFBFTJEH wFab@EHJNTK@G]E vCma@QASJHL |@k`@CKLKVCDEGGDEJH?SJIGSOOO?W?TRSAU?BNPPS@SXM@KVEFWB@JJDGHPHX?`@DHCJHPALDJC]SQC^CDGUEJICM]@ `Hqh@BLULXLx@LPBXAv@GSGj@Ic@Ch@IKM_@A]L]KYD_@Ia@? k]cYIHILI@EBN@BNBFDB?H c[wXS@I?FKEC _Y}XAIBKJGJADE ojA}FHOQ@EDBPHI skAgECEAKK?BJOQ@PFFDJDDJMCE _nAgDAJ?JDPFSFHENDFVKDMEIJGDFHALJCUKEKGEHOECIM?@OOHAHAF aiAyDXPIMMKKMISCNLJHL mkAkJ@FELBNJFBNCNK@GAYH@JEB@HNIFKBFLKPBHEGKDEJCBG?SGFA_@EQK?KDEEAD gkAcF@IKDK?HPJD?I?I mmAsFEVNEEPHD?MHMK@JWQ@ED y~@{BQLGJ?L@HCPGDEPLFPOVO@IJK@QFIAMBI qcAg@MDOCCOGCWCMOIK kfAyAIHCEG?AMAG egAkBMMIOQHMLQDNFCHLF kfAyAGGQI qGm[CA qPyd@b@@b@D^DJKRECSFQGKQKm@UMC@GZI sIk]ICGCEEGCE? _WgJKVEPIH[PIJKJEDID }Y}FDBF? oYyFFGFKFEDEPGL?N?JIDNVC uwAoWPR?TFNCHHLXFb@@ZTLE?Ob@BTHV?SNL^JHHGCQJEFMSEIKSKMKg@EUBSc@MH]SIGMWBWGKUCIZ?N kyAoZMGCTZDPR^MHTT?BSIMUAE[EOUTODMB wqA}SIKKBGIMDFPFEHBDJJE?I e`@mILDBHRL^HPLN?HFLBN@HDFDH?R@DKAKFSDGAIAK wYeIGG@GEIGD[AWBKDICMUQGy@G g]{PGPIBCFMF@NGJEH c_@kNCF wYeIBIDEHMJQDOLMFALS@MAKJUHGHCDKDMDCDOLOHMH?CICO l]vo@I?]C]BYHGJAFAH^D^Dd@Bh@Bn@?XGCGi@EQEKGIGKEKI lh@dq@m@?i@@OGIGSFDHDHh@Aj@?VEJE dm@pk@MAU?EIAWIIQAKFCDGHGFCHCFBFDFV@TBX?IGV@TBNEUO |~@|k@KCYB[?UBUAKHNAV@VAZ@RCHG rkA`m@CGWBYBWCJDPDZARE pnA|l@MESD_@FJAXAZC heBbp@KGe@BSDMDEHd@@XEJGLE noB|s@QKc@FWGa@FYG}@CSBI@]Fw@Bm@DkADy@EuABo@Ds@Ew@ECGlAA`ACNGt@CCIGGEEBI^CNG\\Eo@@m@C]Da@Ea@EOGFGXCZEh@Ab@Ad@ALGXENGDUI@QDa@A_@AOF_@AYCYEUE]AFOEEYCKD]CWC[?YA[EUCWCO@M?[A[BY?[CY@]@[?[?]?[?SEWCYBWAUGKDGFKDSEWF[@UD]AWC]@[@[BIGLGHEVAJGBEFOOBY?Y?W@SDGF[?YAYCYASBYAQMOFUBYAOFY?W@WDOGGGSF[ASBMFYASCUEWA[CYAQCKEEIBGDGDEDGDGAOGEGICEBI@GGGKEKGMEOEGGKEKES?KEMCOAMEKEOAKBFFRDFBNCN@LBLDHD@FILLBP@JDJDJHBFGFIDOBODGFCFEFIDEFAPEFGN@HJFJDXBFDLF\\DXBVBZBNF^@b@A^@^?EF]BUDKDTD`@AZD@NWDCFWFk@@c@D[Dc@Dq@Bo@Ba@De@FSFIFWE_@Ec@Ei@Ea@Eq@?q@@g@DKG[Es@Ae@Ce@Ci@Ak@C]ELEFGd@Eh@Bd@?DGAOIC[Ca@CWEWEQG[CYAMA_@A[AYCWCUE[EQEQEEGTCGGMGSAUESEOGIIMCW?IFW?IOU@EFW@YCWAU?IFUESCUAUAUEUAOEKEOBSAOHIDWCGGSCY?GFOGUAW?U?U@U@GDMDUCU?W?U?SCUAOESASAOEIKKESBGDQBS?MDMDUEEGQCUEQAWCOCOEOCQ@QEMEQ?QCAGQEOASCQAQ@S@OBAHODKDW@MDODS?OCQGQBS@QBS?S?OT@LRBNFAFW?BFHDHHODW@UCKGEGKEKECEKIKAUASASAIGEGMGSCOCKGKAMCS@QASAU?MCIMGDGHQ@Q@SAS@Q?MAO@OBQCU?QAS@MEIEMEWMM@MDMDYJS@Q?UCSAQEKEW?MCOBIDMDU?MBWDW@UAOEKEQAQ@U@QAQ?Q@Q@QCUCS?U?SAQACIMACFEFGFQBUAY?QAY?S?Y?U@MDBFKDUBUDYB[@SBU?MEQBMDQDW@W@IFUBOFU@U?U@W?W?UBUBSBMD@FHDHHDDHHX@JFXBHFJDNFFFBD@HKNCDGFe@@GHb@@\\Bd@@PHBHFFHDYFIFQFWD[D]Dm@DIHy@BQFw@Cm@Da@B~_F? mS}TSEQELHA@ gT}TH@JAB? gT}TRHHABGG? rIkL?IGEEIESKMKM?IGMKEMSIGQAOMIEOOBYGOAKKKSIOGMSEMM?KHSASBG? sNwL?iA?eADOEMBGGI wNwRY?SDQDI@OEGEQAMBEHCGODO?IC yTmQDFBNBHJCHGL]EVKRO^GHEJQTBNWPCB eFuSWDGAOBYFIPQB[FUHICIIDOEGOIKA[BEFMBS@ED aUmBJUHC@GHIJAEKI?CE oYyFFFDHAHI@I@ wYyEBDEJGHGD_AVQ? }Y}FCDJLGB }YeFDJ }YeFGBCFGHI?SESAQEIAGCI? _RTJDBA gReAGEMBOCM?KI {Ja[AHIF@FD@ _KeZHD@J {KeYOEC? oLkYOA oLkYCIFCDCDCDFB@ uKwYDEHEDA cKeYHGHC uKwYBB pe@wEKACNP@AO';
 
   const D2R = Math.PI / 180;
@@ -939,7 +939,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     lon: p.lon * D2R, sl: Math.sin(p.lat * D2R), cl: Math.cos(p.lat * D2R),
   }));
 
-  /* ── view state ── */
+  /* view state */
   /* Centred on the continental US. Idle motion is a slow sway rather than a
      full spin: a full rotation would carry every client off the visible face. */
   const BASE_ROT = 98 * D2R, BASE_TILT = 33 * D2R, SWAY = 12 * D2R;
@@ -960,7 +960,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   resize();
   addEventListener('resize', resize);
 
-  /* ── drag to spin ── */
+  /* drag to spin */
   canvas.addEventListener('pointerdown', e => {
     drag = { x: e.clientX, y: e.clientY };
     vel = 0;
@@ -982,7 +982,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   canvas.addEventListener('pointerup', release);
   canvas.addEventListener('pointercancel', release);
 
-  /* ── draw ── */
+  /* draw */
   let sinP = 0, cosP = 1;
 
   function strokeSet(set, color, width) {
@@ -1080,7 +1080,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   draw();
 })();
 
-/* ── App demo: no autoplay when motion is unwelcome ── */
+/* App demo: no autoplay when motion is unwelcome */
 (function() {
   const v = document.querySelector('.app-video');
   if (v && matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1089,8 +1089,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   }
 })();
 
-/* ── Clients marquee: clone the row until one half covers the viewport,
-      otherwise the loop leaves a gap on wide screens ────────── */
+/* Clients marquee: clone the row until one half covers the viewport,
+      otherwise the loop leaves a gap on wide screens */
 (function() {
   const track = document.querySelector('.mq-track');
   if (!track) return;
@@ -1120,8 +1120,8 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fill);
 })();
 
-/* ── Calendly: se carga recien al acercarse, y si no aparece se
-      muestra el boton de siempre ─────────────────────────── */
+/* Calendly: se carga recien al acercarse, y si no aparece se
+      muestra el boton de siempre */
 (function() {
   const box = document.querySelector('.calendly-inline-widget');
   if (!box) return;
@@ -1141,10 +1141,10 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   io.observe(box);
 })();
 
-/* ── Qualifier pop-up ──────────────────────────────────────
+/* Qualifier pop-up 
    Segments the visitor and carries the answers into the booking
    link, so every call arrives already labelled. It is also a live
-   demo: this is the same kind of pop-up we sell. ───────────── */
+   demo: this is the same kind of pop-up we sell. */
 (function() {
   const box = document.getElementById('qual');
   if (!box) return;
@@ -1169,7 +1169,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
     hourly: {
       v: 'app-demo.mp4', p: 'app-demo-poster.jpg', len: '85 seconds',
       t: "Your inventory is your time.",
-      s: "When the consultation is billable, the cost is not missed leads \u2014 it is hours spent on people who were never going to hire you. We show you who is reaching your calendar and who is dropping out on the way.",
+      s: "When the consultation is billable, the cost is not missed leads. It is hours spent on people who were never going to hire you. We show you who is reaching your calendar and who is dropping out on the way.",
     },
     both: {
       v: '', p: '', len: '',
@@ -1228,7 +1228,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
         if (c.len) {
           const n = document.createElement('div');
           n.className = 'q-len';
-          n.textContent = c.len + ' \u2014 then book if it sounds like your firm.';
+          n.textContent = c.len + '. Then book if it sounds like your firm.';
           slot.appendChild(n);
         }
         slot.hidden = false;
@@ -1264,7 +1264,7 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
   document.addEventListener('mouseleave', e => { if (e.clientY <= 0) fire(); });
 })();
 
-/* ── Scroll fade-in ───────────────────────────── */
+/* Scroll fade-in */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });

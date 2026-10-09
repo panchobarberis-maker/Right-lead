@@ -1,4 +1,4 @@
-# VSL — contingency firms (PI, workers' comp)
+# VSL for contingency firms (PI, workers' comp)
 
 Target: ~3:00 spoken. Audience: owner of a 2-15 attorney contingency
 practice already spending on Google Ads or LSAs.
@@ -6,14 +6,14 @@ Brackets = a number only Frank can fill. Do not invent them.
 
 ---
 
-## 1 · Hook — 0:00
+## 1 · Hook · 0:00
 
 On camera, cold open. No logo, no "hi I'm".
 
 > If your firm runs ads, you are paying for people who never reach your inbox.
 > Not people who said no. People who were trying to hire you, and quit halfway.
 
-## 2 · The scene — 0:15
+## 2 · The scene · 0:15
 
 Still on camera. Slow down here.
 
@@ -32,7 +32,7 @@ Still on camera. Slow down here.
 > They do not come back tomorrow. They go back to the search results and they
 > click the firm underneath you.
 
-## 3 · What it costs — 0:50
+## 3 · What it costs · 0:50
 
 B-roll: the Abandoned tab, 0:35-0:49 of the demo. Zoom so the rows read.
 
@@ -50,49 +50,49 @@ B-roll: the Abandoned tab, 0:35-0:49 of the demo. Zoom so the rows read.
 >
 > And on a contingency practice, one of those is not a lost lead. It is a case.
 
-## 4 · Why it happens — 1:20
+## 4 · Why it happens · 1:20
 
 Back on camera.
 
-> This is not a traffic problem. You already won the hard part — they found you,
+> This is not a traffic problem. You already won the hard part. They found you,
 > they clicked, they wanted to talk.
 >
 > It is an intake problem. And it happens because your form was built to collect
 > what the firm needs, in the order the firm wants it, from someone who is
 > frightened and typing with one thumb.
 
-## 5 · What we do — 1:45
+## 5 · What we do · 1:45
 
 Screen recording throughout. Four beats, one per feature.
 
 > So I built RightLead. It sits on top of the site you already have.
 >
-> **[b-roll 0:14-0:20 — the pop-up]**
+> **[b-roll 0:14-0:20 · the pop-up]**
 > First, it does not open with a form. It asks one question: what happened. The
 > questions after that depend on the answer, so a workplace injury is never asked
 > about a car.
 >
-> **[b-roll 0:42-0:55 — abandoned + the step they quit at]**
+> **[b-roll 0:42-0:55 · abandoned + the step they quit at]**
 > Second, it saves what they typed the moment they type it. So when someone
 > leaves halfway, you still have their name, their email, and the exact step
 > they stopped at.
 >
-> **[b-roll 0:49-0:56 — reminder, and the form coming back filled]**
+> **[b-roll 0:49-0:56 · reminder, and the form coming back filled]**
 > Third, it follows up on its own. And when they come back, everything they
 > already typed is still there, so they finish instead of starting over.
 >
-> **[b-roll 1:10-1:20 — the Marina record, source and campaign]**
-> Fourth, every request tells you where it came from. Not just "Google" —
+> **[b-roll 1:10-1:20 · the Marina record, source and campaign]**
+> Fourth, every request tells you where it came from. Not just "Google".
 > the campaign, and the page they read first. Down to the blog post.
 
-## 6 · Who I am — 2:35
+## 6 · Who I am · 2:35
 
 Back on camera. Short. Credibility, not biography.
 
 > I am Frank Barberis. I do marketing for US law firms, and this is the thing I
 > kept rebuilding for every one of them until I turned it into a product.
 
-## 7 · The offer — 2:50
+## 7 · The offer · 2:50
 
 On camera, look straight down the lens.
 
