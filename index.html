@@ -1160,21 +1160,26 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
 
   /* One VSL per segment. `v` empty -> that segment just gets the text.
      Swap in the real recordings as they are made; app-demo.mp4 stands in. */
+  /* Each segment routes to the landing written for it. `v` empty means
+     that segment gets text only. */
   const COPY = {
     contingency: {
+      go: 'intake',
       v: 'app-demo.mp4', p: 'app-demo-poster.jpg', len: '85 seconds',
       t: "You already paid for the click.",
       s: "On a contingency practice the whole spend rides on intake. We show you how many people start your form, the exact step they quit at, and which ad or page they came from.",
     },
     hourly: {
-      v: 'app-demo.mp4', p: 'app-demo-poster.jpg', len: '85 seconds',
-      t: "Your inventory is your time.",
-      s: "When the consultation is billable, the cost is not missed leads. It is hours spent on people who were never going to hire you. We show you who is reaching your calendar and who is dropping out on the way.",
+      go: 'growth',
+      v: '', p: '', len: '',
+      t: "More leads is the wrong promise.",
+      s: "When you bill by the matter, growth has a ceiling and the ceiling is your capacity. We size the plan to the number of matters you can actually take on, then build only what produces them.",
     },
     both: {
+      go: 'growth',
       v: '', p: '', len: '',
-      t: "Two funnels, one contact form.",
-      s: "General practices usually run one intake for very different matters. We show you where each type drops off, and what each one is worth to you.",
+      t: "Two practices under one roof.",
+      s: "General practices usually run one plan across matters with very different economics. We separate them, and size each to what you can take on.",
     },
   };
 
@@ -1206,7 +1211,19 @@ footer { border-top: 1px solid var(--border); padding: 36px 0; }
       /* the booking link carries the segment, and how much of the VSL
          they actually watched, so the call arrives already labelled */
       const book = document.getElementById('q-book');
+      /* if a landing exists for this answer and we are not already on it,
+         send them there instead of straight to the calendar */
+      const here = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
+      const goTo = c.go && c.go !== here ? c.go : null;
+
       function link() {
+        if (goTo) {
+          book.href = goTo + '.html';
+          book.textContent = 'See how that works \u2192';
+          book.removeAttribute('target');
+          book.removeAttribute('rel');
+          return;
+        }
         const u = new URL(CAL);
         u.searchParams.set('utm_source', 'site-qualifier');
         u.searchParams.set('utm_campaign', answers.model || 'unknown');
